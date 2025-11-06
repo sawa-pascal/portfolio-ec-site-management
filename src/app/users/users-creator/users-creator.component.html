@@ -1,0 +1,34 @@
+<p>USERS-CREATE</p>
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="store()">
+    <div>
+      NAME
+      <input type="text" formControlName="name" />
+      @if (name.touched && name.errors?.['required']) {
+      <div class="error">名前が必要です</div>
+      }
+    </div>
+    <div>
+      MAIL
+      <input type="mail" formControlName="email" />
+    </div>
+    <div>
+      TEL
+      <input type="text" formControlName="tel" />
+    </div>
+    <div>
+      PREFECTURE
+      <select class="drop-down" formControlName="prefecturesDropDown">
+        @for (prefecture of getPrefectures(); track $index) {
+        <option>{{ prefecture.name }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      ADDRESS
+      <input type="text" formControlName="address" />
+    </div>
+    <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
+    <hr />
+  </form>
+</div>

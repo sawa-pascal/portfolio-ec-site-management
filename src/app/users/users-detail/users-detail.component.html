@@ -1,0 +1,13 @@
+<p>USERS-SHOW</p>
+@if (user) {
+<div>
+  <div>ID {{ user.id }}</div>
+  <div>NAME {{ user.name }}</div>
+  <div>MAIL {{ user.email }}</div>
+  <div>TEL {{ user.tel }}</div>
+  <div>PREFECTURE {{ convertPrefectureName(user.prefecture_id) }}</div>
+  <div>ADDRESS {{ user.address }}</div>
+</div>
+
+<div><button (click)="edit()">EDIT</button></div>
+}

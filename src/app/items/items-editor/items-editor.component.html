@@ -1,0 +1,78 @@
+<p>ITEMS-EDIT</p>
+
+<form [formGroup]="myForm" (submit)="update()">
+  <div>ID {{ id }}</div>
+
+  <div>
+    <label>
+      NAME
+      <input type="text" formControlName="name" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      CATEGORY
+      <select class="drop-down" formControlName="categoriesDropDown">
+        @for (category of getCategories(); track $index) {
+          <option>{{ category.name }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
+  <div>
+    <label>
+      PRICE
+      <input type="number" formControlName="price" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      DESCRIPTION
+      <input type="text" formControlName="description" />
+    </label>
+  </div>
+
+  <div>
+    <label>IMAGE</label>
+    <div>
+      @if (image_url) {
+        <label for="upfile" style="cursor:pointer; display:inline-block">
+          <img
+            [src]="getImageUrl(id)"
+            alt="アップロード画像"
+            style="max-width:200px; max-height:200px; display:block"
+          />
+        </label>
+        <input
+          #fileInput
+          id="upfile"
+          name="upfile"
+          type="file"
+          accept="image/*"
+          (change)="onchange(fileInput.files)"
+          style="display:none"
+        />
+      } @else {
+        <button type="button" (click)="fileInput.click()">画像をアップロード</button>
+        <input
+          #fileInput
+          id="upfile"
+          name="upfile"
+          type="file"
+          accept="image/*"
+          (change)="onchange(fileInput.files)"
+          style="display:none"
+        />
+      }
+    </div>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="myForm.invalid">UPDATE</button>
+  </div>
+</form>
+
+<button type="button" (click)="destroy()" [disabled]="myForm.invalid">DESTROY</button>

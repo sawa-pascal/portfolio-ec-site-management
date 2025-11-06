@@ -1,0 +1,96 @@
+// カラーバリアブル定義
+$btn-bg: #a8a8a8;
+$btn-color: #fff;
+$btn-border: #e9e9e9;
+$btn-hover-bg: #cef9ff;
+$btn-disabled-bg: #d9ffff;
+$btn-disabled-color: #a7a7a7;
+$page-btn-active-bg: #fffde5;
+$page-btn-active-color: #000000;
+$page-btn-active-border: #918f87;
+$icon-active-color: #f5f2e8;
+$icon-disabled-color: #e9e4d2;
+$icon-shadow: #ebebebec;
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+
+  // 共通ボタンスタイル
+  .btn {
+    min-width: 40px;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.1rem;
+    border: 1px solid $btn-border;
+    border-radius: 0.3rem;
+    background: $btn-bg;
+    color: $btn-color;
+    transition: background 0.2s, color 0.2s;
+
+    // ホバー時
+    &:not(:disabled):hover {
+      background: $btn-hover-bg;
+      color: $btn-color;
+      cursor: pointer;
+    }
+
+    // 無効時
+    &:disabled {
+      background: $btn-disabled-bg;
+      color: $btn-disabled-color;
+      border: 1px solid #e5e5e5;
+      cursor: default;
+    }
+
+    // ページインジケーター(特殊なdisabled+style属性)
+    &[disabled][style] {
+      background: $page-btn-active-bg !important;
+      color: $page-btn-active-color !important;
+      font-weight: bold;
+      border: 1.5px solid $page-btn-active-border;
+    }
+
+    // secondaryボタン（例えば.pageボタン以外のdisabled時）
+    &.btn-secondary:disabled {
+      background: #f1f1f1;
+      color: #bcbcb8;
+    }
+
+    // アイコンスタイル
+    i {
+      color: $icon-active-color;
+      text-shadow: 0px 1px 1px $icon-shadow;
+    }
+    &:disabled i {
+      color: $icon-disabled-color;
+    }
+  }
+}
+
+// disabled属性のopacity上書き（ページ番号などは上書きあり）
+button[disabled] {
+  opacity: 0.65;
+  // ページインジケータは明度維持
+  &[style] {
+    opacity: 1;
+  }
+}
+
+.fa {
+  vertical-align: middle;
+}
+
+// レスポンシブ（モバイル調整）
+@media (max-width: 430px) {
+  .btn-group {
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    .btn {
+      min-width: 32px;
+      font-size: 1rem;
+      padding: 0.18rem 0.4rem;
+    }
+  }
+}

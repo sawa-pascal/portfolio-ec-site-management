@@ -1,0 +1,26 @@
+<div class="form-group">
+  <p>SIGN IN</p>
+  <form [formGroup]="myForm" (submit)="onSignin()">
+    <div>
+      NAME
+      <input type="text" formControlName="name" />
+      @if (name.touched && name.errors?.['required']) {
+      <div class="error">名前が必要です</div>
+      }
+    </div>
+
+    <div>
+      PASSWORD
+      <input type="password" formControlName="password" />
+      @if (password.touched && password.errors?.['required']) {
+      <div class="error">パスワードが必要です</div>
+      } @if (password.touched && password.errors?.['minlength']) {
+      <div class="error">最低4文字を入力してください</div>
+      }
+    </div>
+    <div><button type="submit" [disabled]="myForm.invalid">SIGN IN</button></div>
+
+    <hr />
+    <p>{{ message }}</p>
+  </form>
+</div>

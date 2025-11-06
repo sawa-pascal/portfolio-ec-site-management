@@ -1,0 +1,27 @@
+<p>CATEGORIES</p>
+<div class="search-categories">
+  <input type="text" [formControl]="searchText" />
+  <button (click)="searchCategories()">SEARCH</button>
+</div>
+
+<button class="create-button" (click)="createCategories()">CREATE</button>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>DISPLAY_ORDER</th>
+  </tr>
+
+  @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
+  <tr>
+    <td>
+      <a [routerLink]="['/categories-detail', item.id]">{{ item.id }}</a>
+    </td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.display_order }}</td>
+  </tr>
+  }
+</table>
+
+<app-pager [itemCount]="viewItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />

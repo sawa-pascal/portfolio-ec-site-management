@@ -1,0 +1,23 @@
+<p>CATEGORIES-CREATE</p>
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="store()">
+    <div>
+      NAME
+      <input type="text" formControlName="name" />
+      @if (name.touched && name.errors?.['required']) {
+      <div class="error">名前が必要です</div>
+      }
+    </div>
+
+    <div>
+      DSPLAY_ORDER
+      <input type="number" formControlName="display_order" />
+      @if (display_order.touched && display_order.errors?.['required']) {
+      <div class="error">表示順序が必要です</div>
+      }
+    </div>
+    <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
+
+    <hr />
+  </form>
+</div>

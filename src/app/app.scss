@@ -1,0 +1,39 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// $header-height: 100px;
+
+// app-header {
+//   height: $header-height;
+// }
+
+// container {
+//   padding-top: $header-height;
+//   margin-top: $header-height;
+// }
+
+app-footer {
+  margin-top: auto;
+}
+
+$container-width: 80%;
+.flex {
+  display: flex;
+
+  .menu {
+    box-sizing: border-box;
+    width: 100% - $container-width;
+    padding: 1rem;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #cc4343;
+  }
+  .container {
+    box-sizing: border-box;
+    width: $container-width;
+  }
+}

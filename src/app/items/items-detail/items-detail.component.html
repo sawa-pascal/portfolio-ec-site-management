@@ -1,0 +1,16 @@
+<p>ITEMS-SHOW</p>
+<div>ID {{ item.id }}</div>
+<div>NAME {{ item.name }}</div>
+<div>CATEGORY {{ convertCategoryName(item.category_id) }}</div>
+<div>PRICE {{ item.price }}</div>
+<div>DESCRIPTION {{ item.description }}</div>
+<div>
+  IMAGE
+
+  @if (item.image_url){
+  <div>
+    <img [src]="getImageUrl()" alt="アイテム画像" style="max-width: 200px; max-height: 200px" />
+  </div>
+  }
+</div>
+<div><button (click)="edit()">EDIT</button></div>

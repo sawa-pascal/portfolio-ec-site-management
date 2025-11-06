@@ -1,0 +1,65 @@
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 600px;
+    tr {
+      background-color: #fff;
+      border-bottom: 2px solid #fff;
+      &:nth-child(even) {
+        background-color: #eee;
+      }
+    }
+    th,
+    td {
+      padding: 0.35rem 1rem;
+    }
+    thead tr {
+      background-color: #ff7433;
+      color: #fff;
+      th {
+        font-size: 0.85rem;
+        padding: 1rem;
+      }
+    }
+    tbody tr {
+      th {
+        text-align: left;
+        font-size: 0.8rem;
+      }
+      .txt {
+        text-align: left;
+      }
+      .price {
+        text-align: right;
+        font-weight: bold;
+        color: #ff5400;
+      }
+    }
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  .search-users {
+    margin: 0 auto 1rem auto;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+  }
+  
+  .search-users input[type='text'] {
+    margin-right: 0.5rem;
+  }
+  
+  .search-users button:hover {
+    background-color: lighten($color: #ccc, $amount: 10%);
+  }
+  
+  .create-button {
+    display: block;
+    margin: 0 auto;
+  }
+  

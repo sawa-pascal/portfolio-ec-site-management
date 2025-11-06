@@ -1,0 +1,67 @@
+<p>ITEMS-CREATE</p>
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="store()">
+    <div>
+      NAME
+      <input type="text" formControlName="name" />
+      @if (name.touched && name.errors?.['required']) {
+      <div class="error">名前が必要です</div>
+      }
+    </div>
+    <div>
+      CATEGORY
+      <select class="drop-down" formControlName="categoriesDropDown">
+        @for (category of getCategories(); track $index) {
+        <option>{{ category.name }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      PRICE
+      <input type="number" formControlName="price" />
+      @if (price.touched && price.errors?.['required']) {
+      <div class="error">値段が必要です</div>
+      }
+    </div>
+    <div>
+      DESCRIPTION
+      <input type="text" formControlName="description" />
+    </div>
+    <div>
+      <label>IMAGE</label>
+      <div>
+        @if (image_url) {
+          <label for="upfile" style="cursor:pointer; display:inline-block">
+            <img
+              [src]="getImageUrl()"
+              alt="アップロード画像"
+              style="max-width:200px; max-height:200px; display:block"
+            />
+          </label>
+          <input
+            #fileInput
+            id="upfile"
+            name="upfile"
+            type="file"
+            accept="image/*"
+            (change)="onchange(fileInput.files)"
+            style="display:none"
+          />
+        } @else {
+          <button type="button" (click)="fileInput.click()">画像をアップロード</button>
+          <input
+            #fileInput
+            id="upfile"
+            name="upfile"
+            type="file"
+            accept="image/*"
+            (change)="onchange(fileInput.files)"
+            style="display:none"
+          />
+        }
+      </div>
+    </div>
+    <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
+    <hr />
+  </form>
+</div>

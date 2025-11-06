@@ -1,0 +1,37 @@
+<p>ITEMS</p>
+<div class="search-items">
+  <input type="text" [formControl]="searchText" />
+
+  <select class="drop-down" [formControl]="categoriesDropDown">
+    <option>ALL</option>
+    @for (category of getCategories(); track $index) {
+    <option>{{ category.name }}</option>
+    }
+  </select>
+
+  <button (click)="searchItems()">SEARCH</button>
+</div>
+
+<button class="create-button" (click)="createItems()">CREATE</button>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>CATEGORY</th>
+    <th>PRICE</th>
+  </tr>
+
+  @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
+  <tr>
+    <td>
+      <a [routerLink]="['/items-detail', item.id]">{{ item.id }}</a>
+    </td>
+    <td>{{ item.name }}</td>
+    <td>{{ convertCategoryName(item.category_id) }}</td>
+    <td>{{ item.price | currency : 'JPY' : 'symbol' }}</td>
+  </tr>
+  }
+</table>
+
+<app-pager [itemCount]="viewItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />

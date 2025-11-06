@@ -1,0 +1,29 @@
+<p>USERS</p>
+<div class="search-users">
+  <input type="text" [formControl]="searchText" placeholder="NAME" />
+  <input type="text" [formControl]="searchMailText" placeholder="MAIL" />
+
+  <button (click)="searchUsers()">SEARCH</button>
+</div>
+
+<button class="create-button" (click)="createUsers()">CREATE</button>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>EMAIL</th>
+  </tr>
+
+  @for (user of viewUsers.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
+  <tr>
+    <td>
+      <a [routerLink]="['/users-detail', user.id]">{{ user.id }}</a>
+    </td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+  </tr>
+  }
+</table>
+
+<app-pager [itemCount]="viewUsers.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />

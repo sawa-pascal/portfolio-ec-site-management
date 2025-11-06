@@ -1,0 +1,17 @@
+<p>CATEGORIES-EDIT</p>
+
+<form [formGroup]="myForm" (submit)="update()">
+  <div>ID {{ id }}</div>
+  <div>
+    NAME
+    <input type="text" formControlName="name" />
+  </div>
+  <div>
+    DSPLAY_ORDER
+    <input type="number" formControlName="display_order" />
+  </div>
+  <div>
+    <button type="submit" [disabled]="myForm.invalid">UPDATE</button>
+  </div>
+</form>
+<button (click)="destroy()" [disabled]="myForm.invalid">DESTROY</button>

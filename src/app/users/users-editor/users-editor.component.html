@@ -1,0 +1,50 @@
+<p>USERS-EDIT</p>
+
+<form [formGroup]="myForm" (submit)="update()">
+  <div>ID {{ id }}</div>
+
+  <div>
+    <label>
+      NAME
+      <input type="text" formControlName="name" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      MAIL
+      <input type="mail" formControlName="email" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      TEL
+      <input type="text" formControlName="tel" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      PREFECTURE
+      <select class="drop-down" formControlName="prefecturesDropDown">
+        @for (prefecture of getPrefectures(); track $index) {
+          <option>{{ prefecture.name }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
+  <div>
+    <label>
+      ADDRESS
+      <input type="text" formControlName="address" />
+    </label>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="myForm.invalid">UPDATE</button>
+  </div>
+</form>
+
+<button type="button" (click)="destroy()" [disabled]="myForm.invalid">DESTROY</button>
