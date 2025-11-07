@@ -4,29 +4,28 @@
   min-height: 100vh;
 }
 
-// $header-height: 100px;
+$header-height: 70px;
+$footer-height: 30px;
 
-// app-header {
-//   height: $header-height;
-// }
-
-// container {
-//   padding-top: $header-height;
-//   margin-top: $header-height;
-// }
+app-header {
+  height: $header-height;
+}
 
 app-footer {
-  margin-top: auto;
+  height: $footer-height;
+  position: sticky;
+  width: 100%;
 }
 
 $container-width: 80%;
 .flex {
   display: flex;
+  flex: 1 1 auto;
 
   .menu {
     box-sizing: border-box;
     width: 100% - $container-width;
-    padding: 1rem;
+    padding: 1%;
 
     border-width: 1px;
     border-style: solid;
@@ -35,5 +34,42 @@ $container-width: 80%;
   .container {
     box-sizing: border-box;
     width: $container-width;
+  }
+}
+
+@media (max-width: 600px) {
+  $header-height: 150px;
+
+  app-header {
+    height: $header-height;
+  }
+
+  $container-height: 80%;
+  .flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    .menu {
+      order: 2;
+      box-sizing: border-box;
+
+      width: auto;
+      height: 100% - $container-height;
+      padding: 1%;
+
+      margin-top: auto;
+
+      border-width: 1px;
+      border-style: solid;
+      border-color: #cc4343;
+    }
+    .container {
+      order: 1;
+      box-sizing: border-box;
+
+      width: auto;
+      height: $container-height;
+    }
   }
 }
