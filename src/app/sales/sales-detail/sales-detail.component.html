@@ -1,1 +1,34 @@
-<p>sales-detail.component works!</p>
+<p>SALE_ITEM</p>
+<div class="sale-item-info">
+  <p>SALE ID: {{ id }}</p>
+  <p>DATE: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
+  <p>USER: {{ viewSaleItems && viewSaleItems.length > 0 ? convertUserName(viewSaleItems[0]['user_id']) : '' }}</p>
+</div>
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>NAME</th>
+    <th>PRICE</th>
+    <th>QUANTITY</th>
+  </tr>
+
+  @for (saleItem of viewSaleItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track
+  $index) {
+  <tr>
+    <td>
+      <img [src]="getImageUrl(saleItem.item_image_url)" alt="{{ saleItem.item_name }}" />
+    </td>
+    <td>{{ saleItem.item_name }}</td>
+    <td>{{ saleItem.price | currency : 'JPY' : 'symbol' : '1.0-0' }}</td>
+    <td>{{ saleItem.quantity }}</td>
+  </tr>
+  }
+</table>
+
+<app-pager [itemCount]="viewSaleItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
+
+<div class="total-price">
+  <p>TOTAL: {{ total | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+  <p>TOTAL WITH TAX: {{ totalWithTax | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+</div>

@@ -46,7 +46,7 @@ export const routes: Routes = [
 
   // 商品売上
   { path: 'sales-list', component: SalesListComponent },
-  { path: 'sales-detail', component: SalesDetailComponent },
+  { path: 'sales-detail/:id', component: SalesDetailComponent },
 
   { path: '**', component: Page404Component },
 ];
