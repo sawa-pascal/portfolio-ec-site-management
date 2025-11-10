@@ -19,6 +19,8 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { UsersCreatorComponent } from './users/users-creator/users-creator.component';
 import { UsersDetailComponent } from './users/users-detail/users-detail.component';
 import { UsersEditorComponent } from './users/users-editor/users-editor.component';
+import { SalesListComponent } from './sales/sales-list/sales-list.component';
+import { SalesDetailComponent } from './sales/sales-detail/sales-detail.component';
 
 export const routes: Routes = [
   { path: '', component: SigninComponent, pathMatch: 'full' },
@@ -41,6 +43,10 @@ export const routes: Routes = [
   { path: 'users-creator', component: UsersCreatorComponent },
   { path: 'users-detail/:id', component: UsersDetailComponent },
   { path: 'users-editor/:id', component: UsersEditorComponent },
+
+  // 商品売上
+  { path: 'sales-list', component: SalesListComponent },
+  { path: 'sales-detail/:id', component: SalesDetailComponent },
 
   { path: '**', component: Page404Component },
 ];
