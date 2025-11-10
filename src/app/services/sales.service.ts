@@ -12,4 +12,10 @@ export class SalesService {
   requestGetSalesList(id: number = 0): Observable<any> {
     return this.http.get(`${this.sharedValueService.getApiUrl()}sales/get_sales_list.php?id=${id}`);
   }
+
+  requestGetSaleItems(id: number): Observable<any> {
+    return this.http.post(`${this.sharedValueService.getApiUrl()}sales/get_sale_items.php`, {
+      sale_id: id,
+    });
+  }
 }
