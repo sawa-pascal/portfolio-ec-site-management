@@ -18,7 +18,9 @@
       <a [routerLink]="['/sales-detail', sale.id]">{{ sale.id }}</a>
     </td>
     <td>{{ sale.date }}</td>
-    <td>{{ convertUserName(sale.user_id) }}</td>
+    <td class="user-name">
+      <a [routerLink]="['/users-detail', sale.user_id]"> {{ convertUserName(sale.user_id) }}</a>
+    </td>
   </tr>
   }
 </table>

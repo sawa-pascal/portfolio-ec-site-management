@@ -70,7 +70,8 @@ img {
   margin: 0 auto;
 }
 
-.sale-item-info, .total-price {
+.sale-item-info,
+.total-price {
   padding: 1.2rem 1.5rem;
   margin: 1rem auto 2rem auto;
   max-width: 600px;
@@ -82,4 +83,24 @@ img {
     font-weight: 500;
     letter-spacing: 0.05em;
   }
+}
+
+.user-name a,
+.item-name a {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  font-weight: inherit;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.user-name a:hover,
+.user-name a:focus,
+.item-name a:hover,
+.item-name a:focus {
+  color: #ff4b33;
+  background-color: #fff7e6;
+  outline: none;
 }
