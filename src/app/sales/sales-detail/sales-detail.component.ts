@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SalesService } from '../../services/sales.service';
 import { PagerComponent } from '../../pager/pager.component';
 import { SharedValueService } from '../../services/shared-value.service';
@@ -9,7 +9,7 @@ import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-sales-detail',
-  imports: [ReactiveFormsModule, PagerComponent, CurrencyPipe],
+  imports: [ReactiveFormsModule, PagerComponent, CurrencyPipe, RouterLink],
   templateUrl: './sales-detail.component.html',
   styleUrl: './sales-detail.component.scss',
 })

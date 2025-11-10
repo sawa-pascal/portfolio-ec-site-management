@@ -59,3 +59,20 @@ p {
 .search-sales button:hover {
   background-color: lighten($color: #ccc, $amount: 10%);
 }
+
+.user-name a {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  font-weight: inherit;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.user-name a:hover,
+.user-name a:focus {
+  color: #ff4b33;
+  background-color: #fff7e6;
+  outline: none;
+}

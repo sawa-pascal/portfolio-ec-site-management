@@ -2,7 +2,14 @@
 <div class="sale-item-info">
   <p>SALE ID: {{ id }}</p>
   <p>DATE: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
-  <p>USER: {{ viewSaleItems && viewSaleItems.length > 0 ? convertUserName(viewSaleItems[0]['user_id']) : '' }}</p>
+  <p class="user-name">
+    USER: 
+    @if (viewSaleItems && viewSaleItems.length > 0) {
+    <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
+      {{ convertUserName(viewSaleItems[0]['user_id']) }}
+    </a>
+    }
+  </p>
 </div>
 
 <table class="table">
@@ -19,7 +26,9 @@
     <td>
       <img [src]="getImageUrl(saleItem.item_image_url)" alt="{{ saleItem.item_name }}" />
     </td>
-    <td>{{ saleItem.item_name }}</td>
+    <td class="item-name">
+      <a [routerLink]="['/items-detail', saleItem.item_id]">{{ saleItem.item_name }}</a>
+    </td>
     <td>{{ saleItem.price | currency : 'JPY' : 'symbol' : '1.0-0' }}</td>
     <td>{{ saleItem.quantity }}</td>
   </tr>
