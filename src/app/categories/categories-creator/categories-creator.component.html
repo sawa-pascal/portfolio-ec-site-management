@@ -3,7 +3,7 @@
   <form [formGroup]="myForm" (submit)="store()">
     <div>
       NAME
-      <input type="text" formControlName="name" />
+      <input type="text" formControlName="name" placeholder="NAME"/>
       @if (name.touched && name.errors?.['required']) {
       <div class="error">名前が必要です</div>
       }

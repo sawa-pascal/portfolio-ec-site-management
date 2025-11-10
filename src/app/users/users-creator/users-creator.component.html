@@ -3,18 +3,18 @@
   <form [formGroup]="myForm" (submit)="store()">
     <div>
       NAME
-      <input type="text" formControlName="name" />
+      <input type="text" formControlName="name" placeholder="NAME"/>
       @if (name.touched && name.errors?.['required']) {
       <div class="error">名前が必要です</div>
       }
     </div>
     <div>
       MAIL
-      <input type="mail" formControlName="email" />
+      <input type="mail" formControlName="email" placeholder="MAIL"/>
     </div>
     <div>
       TEL
-      <input type="text" formControlName="tel" />
+      <input type="text" formControlName="tel" placeholder="TEL"/>
     </div>
     <div>
       PREFECTURE
@@ -26,7 +26,7 @@
     </div>
     <div>
       ADDRESS
-      <input type="text" formControlName="address" />
+      <input type="text" formControlName="address" placeholder="ADDRESS"/>
     </div>
     <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
     <hr />
