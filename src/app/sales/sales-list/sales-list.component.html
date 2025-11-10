@@ -1,1 +1,26 @@
-<p>sales-list.component works!</p>
+<p>SALES</p>
+<div class="search-sales">
+  <input type="text" [formControl]="searchText" placeholder="USERNAME" />
+
+  <button (click)="searchSales()">SEARCH</button>
+</div>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>DATE</th>
+    <th>USERNAME</th>
+  </tr>
+
+  @for (sale of viewSales.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
+  <tr>
+    <td>
+      <a [routerLink]="['/sales-detail', sale.id]">{{ sale.id }}</a>
+    </td>
+    <td>{{ sale.date }}</td>
+    <td>{{ convertUserName(sale.user_id) }}</td>
+  </tr>
+  }
+</table>
+
+<app-pager [itemCount]="viewSales.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
