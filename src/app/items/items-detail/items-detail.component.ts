@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesService } from '../../services/categories.service';
 import { ItemsService } from '../../services/items.service';
@@ -8,7 +8,7 @@ import { SharedValueService } from '../../services/shared-value.service';
 
 @Component({
   selector: 'app-items-detail',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './items-detail.component.html',
   styleUrl: './items-detail.component.scss',
 })

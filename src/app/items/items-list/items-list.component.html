@@ -28,7 +28,11 @@
       <a [routerLink]="['/items-detail', item.id]">{{ item.id }}</a>
     </td>
     <td>{{ item.name }}</td>
-    <td>{{ convertCategoryName(item.category_id) }}</td>
+    <td class="category-name">
+      <a [routerLink]="['/categories-detail', item.category_id]">{{
+        convertCategoryName(item.category_id)
+      }}</a>
+    </td>
     <td>{{ item.price | currency : 'JPY' : 'symbol' }}</td>
   </tr>
   }
