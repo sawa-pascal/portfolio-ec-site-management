@@ -8,7 +8,10 @@ import { Users } from '../users/users-model';
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient, private sharedValueService: SharedValueService) {}
+  private users: Users[] = [];
+  constructor(private http: HttpClient, private sharedValueService: SharedValueService) {
+    this.updateUsers();
+  }
 
   requestGetUsersList(id: number = 0): Observable<any> {
     return this.http.get(`${this.sharedValueService.getApiUrl()}users/get_users_list.php?id=${id}`);
@@ -48,5 +51,27 @@ export class UsersService {
     return this.http.post(`${this.sharedValueService.getApiUrl()}users/delete_users.php`, {
       id: id,
     });
+  }
+
+  updateUsers() {
+    this.requestGetUsersList().subscribe({
+      next: (res: any) => {
+        if (res.success) {
+          this.users = res.users as Users[];
+        }
+      },
+      error: () => {
+        console.log('requestGet失敗');
+      },
+    });
+  }
+
+  getUsers(): Users[] {
+    return this.users;
+  }
+
+  convertUserName(id: number): string {
+    const user = this.users.find((_) => _.id == id);
+    return user == null ? '' : user.name;
   }
 }
