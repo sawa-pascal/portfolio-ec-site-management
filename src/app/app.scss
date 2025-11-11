@@ -51,7 +51,7 @@ $container-width: 80%;
     flex: 1 1 auto;
 
     .menu {
-      order: 2;
+      order: 1;
       box-sizing: border-box;
 
       width: auto;
@@ -65,7 +65,7 @@ $container-width: 80%;
       border-color: #cc4343;
     }
     .container {
-      order: 1;
+      order: 2;
       box-sizing: border-box;
 
       width: auto;
