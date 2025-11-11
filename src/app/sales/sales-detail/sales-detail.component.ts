@@ -22,7 +22,7 @@ export class SalesDetailComponent implements OnInit {
   searchText: FormControl = new FormControl('');
   searchMailText: FormControl = new FormControl('');
   pageIndex: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 5;
 
   private saleItems: any = [];
 
