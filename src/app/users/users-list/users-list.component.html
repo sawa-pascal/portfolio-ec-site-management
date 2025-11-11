@@ -1,18 +1,18 @@
-<p>USERS</p>
+<p>ユーザー一覧</p>
 <div class="search-users">
-  <input type="text" [formControl]="searchText" placeholder="NAME" />
-  <input type="text" [formControl]="searchMailText" placeholder="MAIL" />
+  <input type="text" [formControl]="searchText" placeholder="名前" />
+  <input type="text" [formControl]="searchMailText" placeholder="メール" />
 
-  <button (click)="searchUsers()">SEARCH</button>
+  <button (click)="searchUsers()">検索</button>
 </div>
 
-<button class="create-button" (click)="createUsers()">CREATE</button>
+<button class="create-button" (click)="createUsers()">作成</button>
 
 <table class="table">
   <tr>
     <th>ID</th>
-    <th>NAME</th>
-    <th>EMAIL</th>
+    <th>名前</th>
+    <th>メール</th>
   </tr>
 
   @for (user of viewUsers.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {

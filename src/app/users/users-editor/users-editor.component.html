@@ -1,32 +1,32 @@
-<p>USERS-EDIT</p>
+<p>ユーザー編集</p>
 
 <form [formGroup]="myForm" (submit)="update()">
   <div>ID {{ id }}</div>
 
   <div>
     <label>
-      NAME
+      名前
       <input type="text" formControlName="name" />
     </label>
   </div>
 
   <div>
     <label>
-      MAIL
+      メール
       <input type="mail" formControlName="email" />
     </label>
   </div>
 
   <div>
     <label>
-      TEL
+      電話番号
       <input type="text" formControlName="tel" />
     </label>
   </div>
 
   <div>
     <label>
-      PREFECTURE
+      都道府県
       <select class="drop-down" formControlName="prefecturesDropDown">
         @for (prefecture of getPrefectures(); track $index) {
           <option>{{ prefecture.name }}</option>
@@ -37,14 +37,14 @@
 
   <div>
     <label>
-      ADDRESS
+      住所
       <input type="text" formControlName="address" />
     </label>
   </div>
 
   <div>
-    <button type="submit" [disabled]="myForm.invalid">UPDATE</button>
+    <button type="submit" [disabled]="myForm.invalid">更新</button>
   </div>
 </form>
 
-<button type="button" (click)="destroy()" [disabled]="myForm.invalid">DESTROY</button>
+<button type="button" (click)="destroy()" [disabled]="myForm.invalid">削除</button>
