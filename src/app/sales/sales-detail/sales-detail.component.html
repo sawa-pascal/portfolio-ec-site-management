@@ -1,9 +1,9 @@
-<p>SALE_ITEM</p>
+<p>レシート</p>
 <div class="sale-item-info">
   <p>SALE ID: {{ id }}</p>
-  <p>DATE: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
+  <p>日付: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
   <p class="user-name">
-    USER: 
+    ユーザー名: 
     @if (viewSaleItems && viewSaleItems.length > 0) {
     <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
       {{ convertUserName(viewSaleItems[0]['user_id']) }}
@@ -15,9 +15,9 @@
 <table class="table">
   <tr>
     <th></th>
-    <th>NAME</th>
-    <th>PRICE</th>
-    <th>QUANTITY</th>
+    <th>名前</th>
+    <th>価格</th>
+    <th>個数</th>
   </tr>
 
   @for (saleItem of viewSaleItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track
@@ -38,8 +38,8 @@
 <app-pager [itemCount]="viewSaleItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
 
 <div class="total-price">
-  <p>TOTAL: {{ total | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
-  <p>TOTAL WITH TAX: {{ totalWithTax | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+  <p>合計金額: {{ total | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+  <p>税込み合計金額: {{ totalWithTax | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
 </div>
 
-<button class="return-sales-button" (click)="returnSalesList()">RETURN SALES</button>
+<button class="return-sales-button" (click)="returnSalesList()">レシート一覧へ戻る</button>

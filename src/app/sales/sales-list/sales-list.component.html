@@ -1,15 +1,15 @@
-<p>SALES</p>
+<p>レシート一覧</p>
 <div class="search-sales">
-  <input type="text" [formControl]="searchText" placeholder="USERNAME" />
+  <input type="text" [formControl]="searchText" placeholder="ユーザー名" />
 
-  <button (click)="searchSales()">SEARCH</button>
+  <button (click)="searchSales()">検索</button>
 </div>
 
 <table class="table">
   <tr>
     <th>ID</th>
-    <th>DATE</th>
-    <th>USERNAME</th>
+    <th>日付</th>
+    <th>ユーザー名</th>
   </tr>
 
   @for (sale of viewSales.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
