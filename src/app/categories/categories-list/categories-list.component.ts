@@ -25,7 +25,7 @@ export class CategoriesListComponent implements OnInit {
     this.categoriesService.requestGetCategoriesList().subscribe({
       next: (res: any) => {
         if (res.success) {
-          this.items = this.viewItems = res.items as Categories[];
+          this.items = this.viewItems = (res.items as Categories[]).sort((a, b) => a.id - b.id);
         }
       },
       error: () => {
