@@ -1,23 +1,23 @@
-<p>USERS-CREATE</p>
+<p>ユーザー作成</p>
 <div class="form-group">
   <form [formGroup]="myForm" (submit)="store()">
     <div>
-      NAME
-      <input type="text" formControlName="name" placeholder="NAME"/>
+      名前
+      <input type="text" formControlName="name" placeholder="名前"/>
       @if (name.touched && name.errors?.['required']) {
       <div class="error">名前が必要です</div>
       }
     </div>
     <div>
-      MAIL
-      <input type="mail" formControlName="email" placeholder="MAIL"/>
+      メール
+      <input type="mail" formControlName="email" placeholder="メール"/>
     </div>
     <div>
-      TEL
-      <input type="text" formControlName="tel" placeholder="TEL"/>
+      電話番号
+      <input type="text" formControlName="tel" placeholder="電話番号"/>
     </div>
     <div>
-      PREFECTURE
+      都道府県
       <select class="drop-down" formControlName="prefecturesDropDown">
         @for (prefecture of getPrefectures(); track $index) {
         <option>{{ prefecture.name }}</option>
@@ -25,10 +25,10 @@
       </select>
     </div>
     <div>
-      ADDRESS
-      <input type="text" formControlName="address" placeholder="ADDRESS"/>
+      住所
+      <input type="text" formControlName="address" placeholder="住所"/>
     </div>
-    <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
+    <div><button type="submit" [disabled]="myForm.invalid">作成</button></div>
     <hr />
   </form>
 </div>

@@ -1,19 +1,19 @@
-<p>ITEMS-SHOW</p>
+<p>商品詳細</p>
 <div>ID {{ item.id }}</div>
-<div>NAME {{ item.name }}</div>
+<div>名前 {{ item.name }}</div>
 <div class="category-name">
-  CATEGORY
+  カテゴリー
   <a [routerLink]="['/categories-detail', item.category_id]">
     {{ convertCategoryName(item.category_id) }}
   </a>
 </div>
-<div>PRICE {{ item.price }}</div>
-<div>DESCRIPTION {{ item.description }}</div>
+<div>価格（円） {{ item.price }}</div>
+<div>説明 {{ item.description }}</div>
 <div>
-  IMAGE @if (item.image_url){
+  画像 @if (item.image_url){
   <div>
     <img [src]="getImageUrl()" alt="アイテム画像" style="max-width: 200px; max-height: 200px" />
   </div>
   }
 </div>
-<div><button (click)="edit()">EDIT</button></div>
+<div><button (click)="edit()">編集</button></div>

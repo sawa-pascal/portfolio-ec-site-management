@@ -1,15 +1,15 @@
-<p>ITEMS-CREATE</p>
+<p>商品作成</p>
 <div class="form-group">
   <form [formGroup]="myForm" (submit)="store()">
     <div>
-      NAME
-      <input type="text" formControlName="name" placeholder="NAME"/>
+      名前
+      <input type="text" formControlName="name" placeholder="名前"/>
       @if (name.touched && name.errors?.['required']) {
       <div class="error">名前が必要です</div>
       }
     </div>
     <div>
-      CATEGORY
+      カテゴリー
       <select class="drop-down" formControlName="categoriesDropDown">
         @for (category of getCategories(); track $index) {
         <option>{{ category.name }}</option>
@@ -17,18 +17,18 @@
       </select>
     </div>
     <div>
-      PRICE
-      <input type="number" formControlName="price" />
+      価格（円）
+      <input type="number" formControlName="price" placeholder="価格"/>
       @if (price.touched && price.errors?.['required']) {
       <div class="error">値段が必要です</div>
       }
     </div>
     <div>
-      DESCRIPTION
-      <input type="text" formControlName="description" placeholder="DESCRIPTION"/>
+      説明
+      <input type="text" formControlName="description" placeholder="説明"/>
     </div>
     <div>
-      <label>IMAGE</label>
+      <label>画像</label>
       <div>
         @if (image_url) {
           <label for="upfile" style="cursor:pointer; display:inline-block">
@@ -61,7 +61,7 @@
         }
       </div>
     </div>
-    <div><button type="submit" [disabled]="myForm.invalid">STORE</button></div>
+    <div><button type="submit" [disabled]="myForm.invalid">作成</button></div>
     <hr />
   </form>
 </div>

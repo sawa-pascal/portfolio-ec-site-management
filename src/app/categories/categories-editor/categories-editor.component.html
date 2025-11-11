@@ -1,17 +1,17 @@
-<p>CATEGORIES-EDIT</p>
+<p>カテゴリー編集</p>
 
 <form [formGroup]="myForm" (submit)="update()">
   <div>ID {{ id }}</div>
   <div>
-    NAME
+    名前
     <input type="text" formControlName="name" />
   </div>
   <div>
-    DSPLAY_ORDER
+    表示順
     <input type="number" formControlName="display_order" />
   </div>
   <div>
-    <button type="submit" [disabled]="myForm.invalid">UPDATE</button>
+    <button type="submit" [disabled]="myForm.invalid">更新</button>
   </div>
 </form>
-<button (click)="destroy()" [disabled]="myForm.invalid">DESTROY</button>
+<button (click)="destroy()" [disabled]="myForm.invalid">削除</button>
