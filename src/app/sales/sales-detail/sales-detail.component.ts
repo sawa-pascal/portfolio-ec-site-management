@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SalesService } from '../../services/sales.service';
 import { PagerComponent } from '../../pager/pager.component';
 import { SharedValueService } from '../../services/shared-value.service';
@@ -29,6 +29,7 @@ export class SalesDetailComponent implements OnInit {
   constructor(
     private salesService: SalesService,
     private route: ActivatedRoute,
+    private router: Router,
     private sharedValueService: SharedValueService,
     private usersService: UsersService
   ) {}
@@ -73,5 +74,9 @@ export class SalesDetailComponent implements OnInit {
 
   convertUserName(id: number): string {
     return this.usersService.convertUserName(id);
+  }
+
+  returnSalesList() {
+    this.router.navigate(['/sales-list']);
   }
 }
