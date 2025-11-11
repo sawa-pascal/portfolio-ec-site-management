@@ -1,25 +1,25 @@
-<p>ITEMS</p>
+<p>商品一覧</p>
 <div class="search-items">
-  <input type="text" [formControl]="searchText" placeholder="NAME"/>
+  <input type="text" [formControl]="searchText" placeholder="名前"/>
 
   <select class="drop-down" [formControl]="categoriesDropDown">
-    <option>ALL</option>
+    <option>すべて</option>
     @for (category of getCategories(); track $index) {
     <option>{{ category.name }}</option>
     }
   </select>
 
-  <button (click)="searchItems()">SEARCH</button>
+  <button (click)="searchItems()">検索</button>
 </div>
 
-<button class="create-button" (click)="createItems()">CREATE</button>
+<button class="create-button" (click)="createItems()">作成</button>
 
 <table class="table">
   <tr>
     <th>ID</th>
-    <th>NAME</th>
-    <th>CATEGORY</th>
-    <th>PRICE</th>
+    <th>名前</th>
+    <th>カテゴリー</th>
+    <th>価格</th>
   </tr>
 
   @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
