@@ -1,16 +1,16 @@
-<p>CATEGORIES</p>
+<p>カテゴリー一覧</p>
 <div class="search-categories">
-  <input type="text" [formControl]="searchText" placeholder="NAME" />
-  <button (click)="searchCategories()">SEARCH</button>
+  <input type="text" [formControl]="searchText" placeholder="名前" />
+  <button (click)="searchCategories()">検索</button>
 </div>
 
-<button class="create-button" (click)="createCategories()">CREATE</button>
+<button class="create-button" (click)="createCategories()">作成</button>
 
 <table class="table">
   <tr>
     <th>ID</th>
-    <th>NAME</th>
-    <th>DISPLAY_ORDER</th>
+    <th>名前</th>
+    <th>表示順</th>
   </tr>
 
   @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
