@@ -1,0 +1,74 @@
+@use '../../form-base.scss';
+
+:host {
+  @include form-base.flex-center();
+  font-family: sans-serif;
+  background-color: form-base.$background;
+  text-align: center;
+  height: 100%;
+  padding-top: 0;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+button {
+  @include form-base.button-base();
+
+  &:hover {
+    background-color: form-base.$primary-dark;
+  }
+}
+
+a {
+  @include form-base.link-base();
+}
+
+.error {
+  @include form-base.error-text();
+}
+
+.message {
+  font-size: 11px;
+}
+
+// 詳細表示用グリッド
+.detail-grid {
+  margin: 0 auto;
+  padding: 20px 24px;
+  background-color: white;
+  border-radius: 6px;
+  min-width: 260px;
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 15px;
+  column-gap: 100px;
+  align-items: center;
+
+  .label {
+    grid-column: 1;
+    justify-self: end;
+    align-self: center;
+    font-weight: bold;
+    color: form-base.$text-main;
+    margin-right: 10px;
+    white-space: nowrap;
+  }
+  div:not(.label):not(.button-row) {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-grid {
+    max-width: 98vw;
+    padding: 12px 5px;
+    font-size: 15px;
+    row-gap: 10px;
+    column-gap: 8px;
+    border-radius: 3px;
+  }
+}
