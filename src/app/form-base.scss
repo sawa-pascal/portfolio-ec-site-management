@@ -135,6 +135,14 @@ a {
   button {
     grid-column: 1 / span 2;
     justify-self: center;
+
+    &:disabled {
+      background-color: #ccc !important;
+      color: #888 !important;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.7;
+    }
   }
 }
 

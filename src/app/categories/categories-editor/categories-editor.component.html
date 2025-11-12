@@ -1,17 +1,24 @@
 <p>カテゴリー編集</p>
 
-<form [formGroup]="myForm" (submit)="update()">
-  <div>ID {{ id }}</div>
-  <div>
-    名前
-    <input type="text" formControlName="name" />
-  </div>
-  <div>
-    表示順
-    <input type="number" formControlName="display_order" />
-  </div>
-  <div>
-    <button type="submit" [disabled]="myForm.invalid">更新</button>
-  </div>
-</form>
-<button (click)="destroy()" [disabled]="myForm.invalid">削除</button>
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="update()">
+    <div>
+      <label class="label">ID</label>
+      <div>{{ id }}</div>
+    </div>
+    <div>
+      <label for="name" class="label">名前</label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+    <div>
+      <label for="display_order" class="label">表示順</label>
+      <input id="display_order" type="number" formControlName="display_order" />
+    </div>
+    <div>
+      <button type="submit" [disabled]="myForm.invalid" class="update-button">更新</button>
+    </div>
+  </form>
+</div>
+<div>
+  <button (click)="destroy()" [disabled]="myForm.invalid" class="delete-button">削除</button>
+</div>

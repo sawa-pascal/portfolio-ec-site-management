@@ -1,45 +1,46 @@
 <p>レシート</p>
-<div class="sale-item-info">
-  <p>SALE ID: {{ id }}</p>
-  <p>日付: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
-  <p class="user-name">
-    ユーザー名: 
-    @if (viewSaleItems && viewSaleItems.length > 0) {
-    <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
-      {{ convertUserName(viewSaleItems[0]['user_id']) }}
-    </a>
+<div class="sales-detail-content">
+  <div class="sale-item-info">
+    <p>SALE ID: {{ id }}</p>
+    <p>日付: {{ viewSaleItems && viewSaleItems.length > 0 ? viewSaleItems[0]['date'] : '' }}</p>
+    <p class="user-name">
+      ユーザー名: @if (viewSaleItems && viewSaleItems.length > 0) {
+      <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
+        {{ convertUserName(viewSaleItems[0]['user_id']) }}
+      </a>
+      }
+    </p>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>名前</th>
+      <th>価格</th>
+      <th>個数</th>
+    </tr>
+
+    @for (saleItem of viewSaleItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track
+    $index) {
+    <tr>
+      <td>
+        <img [src]="getImageUrl(saleItem.item_image_url)" alt="{{ saleItem.item_name }}" />
+      </td>
+      <td class="item-name">
+        <a [routerLink]="['/items-detail', saleItem.item_id]">{{ saleItem.item_name }}</a>
+      </td>
+      <td>{{ saleItem.price | currency : 'JPY' : 'symbol' : '1.0-0' }}</td>
+      <td>{{ saleItem.quantity }}</td>
+    </tr>
     }
-  </p>
-</div>
+  </table>
 
-<table class="table">
-  <tr>
-    <th></th>
-    <th>名前</th>
-    <th>価格</th>
-    <th>個数</th>
-  </tr>
+  <app-pager [itemCount]="viewSaleItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
 
-  @for (saleItem of viewSaleItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track
-  $index) {
-  <tr>
-    <td>
-      <img [src]="getImageUrl(saleItem.item_image_url)" alt="{{ saleItem.item_name }}" />
-    </td>
-    <td class="item-name">
-      <a [routerLink]="['/items-detail', saleItem.item_id]">{{ saleItem.item_name }}</a>
-    </td>
-    <td>{{ saleItem.price | currency : 'JPY' : 'symbol' : '1.0-0' }}</td>
-    <td>{{ saleItem.quantity }}</td>
-  </tr>
-  }
-</table>
-
-<app-pager [itemCount]="viewSaleItems.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
-
-<div class="total-price">
-  <p>合計金額: {{ total | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
-  <p>税込み合計金額: {{ totalWithTax | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+  <div class="total-price">
+    <p>合計金額: {{ total | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+    <p>税込み合計金額: {{ totalWithTax | currency : 'JPY' : 'symbol' : '1.0-0' }}</p>
+  </div>
 </div>
 
 <button class="return-sales-button" (click)="returnSalesList()">レシート一覧へ戻る</button>

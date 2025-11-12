@@ -1,0 +1,83 @@
+@use "../../form-base.scss";
+
+p {
+  margin-bottom: 10px;
+}
+
+.form-group form {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 12px 16px;
+  align-items: center;
+
+  > div {
+    grid-column: 1 / span 2;
+    display: contents;
+  }
+
+  label,
+  .label {
+    grid-column: 1;
+    align-self: center;
+    justify-self: end;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  input {
+    grid-column: 2;
+    width: 100%;
+  }
+
+  // inputでない2列目は左寄せ
+  div:not(.label):not(:has(input)) {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  // .update-buttonを表示してそれ以外のsubmitボタンは非表示
+  button[type="submit"]:not(.update-button) {
+    display: none;
+  }
+}
+
+// 更新・削除ボタンを格子外で横並び
+.button-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+// 一般ボタン共通
+button,
+.delete-button,
+.update-button {
+  @include form-base.button-base();
+
+  &:hover {
+    background-color: form-base.$primary-dark;
+  }
+}
+
+// .delete-button 追加で色を変えたいならここで定義
+.delete-button {
+  background-color: #ff6565;
+  color: white;
+
+  &:hover {
+    background-color: #e23a3a;
+  }
+}
+
+a {
+  @include form-base.link-base();
+}
+
+.error {
+  @include form-base.error-text();
+}
+
+.message {
+  font-size: 11px;
+}

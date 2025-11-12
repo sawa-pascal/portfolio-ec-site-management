@@ -1,19 +1,38 @@
 <p>商品詳細</p>
-<div>ID {{ item.id }}</div>
-<div>名前 {{ item.name }}</div>
-<div class="category-name">
-  カテゴリー
-  <a [routerLink]="['/categories-detail', item.category_id]">
-    {{ convertCategoryName(item.category_id) }}
-  </a>
+<div class="form-group">
+  <form>
+    <div>
+      <label class="label">ID</label>
+      <span>{{ item.id }}</span>
+    </div>
+    <div>
+      <label class="label">名前</label>
+      <span>{{ item.name }}</span>
+    </div>
+    <div class="category-name">
+      <label class="label">カテゴリー</label>
+      <a [routerLink]="['/categories-detail', item.category_id]">
+        {{ convertCategoryName(item.category_id) }}
+      </a>
+    </div>
+    <div>
+      <label class="label">価格（円）</label>
+      <span>{{ item.price }}</span>
+    </div>
+    <div>
+      <label class="label">説明</label>
+      <span>{{ item.description }}</span>
+    </div>
+    <div>
+      <label class="label">画像</label>
+      <span>
+        @if (item.image_url) {
+        <img [src]="getImageUrl()" alt="アイテム画像" style="max-width: 200px; max-height: 200px" />
+        }
+      </span>
+    </div>
+    <div>
+      <button type="button" (click)="edit()">編集</button>
+    </div>
+  </form>
 </div>
-<div>価格（円） {{ item.price }}</div>
-<div>説明 {{ item.description }}</div>
-<div>
-  画像 @if (item.image_url){
-  <div>
-    <img [src]="getImageUrl()" alt="アイテム画像" style="max-width: 200px; max-height: 200px" />
-  </div>
-  }
-</div>
-<div><button (click)="edit()">編集</button></div>

@@ -1,8 +1,10 @@
+$content-size: 600px;
+
 table {
   border-collapse: collapse;
   margin: 0 auto;
   padding: 0;
-  width: 600px;
+  width: $content-size;
   tr {
     background-color: #fff;
     border-bottom: 2px solid #fff;
@@ -74,7 +76,7 @@ img {
 .total-price {
   padding: 1.2rem 1.5rem;
   margin: 1rem auto 2rem auto;
-  max-width: 600px;
+  max-width: $content-size;
   font-size: 1.14rem;
   line-height: 1.7;
 
@@ -108,5 +110,58 @@ img {
 .return-sales-button {
   display: block;
   margin: 1em auto;
-  padding: 0.5em 1em; 
+  padding: 0.5em 1em;
+}
+
+$background: #f0f0f0;
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: $background;
+  height: 100%;
+  width: 100%;
+  padding-top: 0;
+}
+
+.sales-detail-content {
+  width: $content-size;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 830px) {
+  $content-size: 420px;
+
+  table {
+    width: $content-size;
+  }
+  .sale-item-info,
+  .total-price {
+    max-width: $content-size;
+  }
+
+  .sales-detail-content {
+    width: $content-size;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  $content-size: 300px;
+
+  table {
+    width: $content-size;
+  }
+  .sale-item-info,
+  .total-price {
+    max-width: $content-size;
+  }
+
+  .sales-detail-content {
+    width: $content-size;
+  }
 }

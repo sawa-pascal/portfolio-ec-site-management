@@ -1,5 +1,16 @@
 <p>カテゴリー詳細</p>
-<div>ID {{ category.id }}</div>
-<div>名前 {{ category.name }}</div>
-<div>表示順 {{ category.display_order }}</div>
-<div><button (click)="edit()">編集</button></div>
+<div class="content-frame">
+  <div class="detail-grid">
+    <div class="label">ID</div>
+    <div>{{ category.id }}</div>
+
+    <div class="label">名前</div>
+    <div>{{ category.name }}</div>
+
+    <div class="label">表示順</div>
+    <div>{{ category.display_order }}</div>
+  </div>
+  <div>
+    <button (click)="edit()">編集</button>
+  </div>
+</div>
