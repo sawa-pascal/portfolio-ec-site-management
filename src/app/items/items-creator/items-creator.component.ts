@@ -13,7 +13,7 @@ import { SharedValueService } from '../../services/shared-value.service';
   styleUrl: './items-creator.component.scss',
 })
 export class ItemsCreatorComponent implements OnInit {
-  name: FormControl = new FormControl('名前（仮）', Validators.required);
+  name: FormControl = new FormControl('', Validators.required);
   price: FormControl = new FormControl(1, [Validators.required, Validators.min(1)]);
   description: FormControl = new FormControl('');
   categoriesDropDown: FormControl = new FormControl('');
