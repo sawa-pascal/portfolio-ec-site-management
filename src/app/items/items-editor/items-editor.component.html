@@ -1,78 +1,67 @@
 <p>商品編集</p>
-
-<form [formGroup]="myForm" (submit)="update()">
-  <div>ID {{ id }}</div>
-
-  <div>
-    <label>
-      名前
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="update()">
+    <div>
+      <label class="label">ID</label>
+      <span>{{ id }}</span>
+    </div>
+    <div>
+      <label class="label">名前</label>
       <input type="text" formControlName="name" />
-    </label>
-  </div>
-
-  <div>
-    <label>
-      カテゴリー
+    </div>
+    <div>
+      <label class="label">カテゴリー</label>
       <select class="drop-down" formControlName="categoriesDropDown">
         @for (category of getCategories(); track $index) {
           <option>{{ category.name }}</option>
         }
       </select>
-    </label>
-  </div>
-
-  <div>
-    <label>
-      価格（円）
-      <input type="number" formControlName="price" />
-    </label>
-  </div>
-
-  <div>
-    <label>
-      説明
-      <input type="text" formControlName="description" />
-    </label>
-  </div>
-
-  <div>
-    <label>画像</label>
-    <div>
-      @if (image_url) {
-        <label for="upfile" style="cursor:pointer; display:inline-block">
-          <img
-            [src]="getImageUrl(id)"
-            alt="アップロード画像"
-            style="max-width:200px; max-height:200px; display:block"
-          />
-        </label>
-        <input
-          #fileInput
-          id="upfile"
-          name="upfile"
-          type="file"
-          accept="image/*"
-          (change)="onchange(fileInput.files)"
-          style="display:none"
-        />
-      } @else {
-        <button type="button" (click)="fileInput.click()">画像をアップロード</button>
-        <input
-          #fileInput
-          id="upfile"
-          name="upfile"
-          type="file"
-          accept="image/*"
-          (change)="onchange(fileInput.files)"
-          style="display:none"
-        />
-      }
     </div>
-  </div>
-
-  <div>
-    <button type="submit" [disabled]="myForm.invalid">更新</button>
-  </div>
-</form>
-
-<button type="button" (click)="destroy()" [disabled]="myForm.invalid">削除</button>
+    <div>
+      <label class="label">価格（円）</label>
+      <input type="number" formControlName="price" />
+    </div>
+    <div>
+      <label class="label">説明</label>
+      <input type="text" formControlName="description" />
+    </div>
+    <div>
+      <label class="label">画像</label>
+      <span>
+        @if (image_url) {
+          <label for="upfile" style="cursor:pointer; display:inline-block">
+            <img
+              [src]="getImageUrl(id)"
+              alt="アップロード画像"
+              style="max-width:200px; max-height:200px; display:block"
+            />
+          </label>
+          <input
+            #fileInput
+            id="upfile"
+            name="upfile"
+            type="file"
+            accept="image/*"
+            (change)="onchange(fileInput.files)"
+            style="display:none"
+          />
+        } @else {
+          <button type="button" (click)="fileInput.click()">画像をアップロード</button>
+          <input
+            #fileInput
+            id="upfile"
+            name="upfile"
+            type="file"
+            accept="image/*"
+            (change)="onchange(fileInput.files)"
+            style="display:none"
+          />
+        }
+      </span>
+    </div>
+    <div>
+      <button type="submit" [disabled]="myForm.invalid" class="update-button">更新</button>
+    </div>
+  </form>
+  <button type="button" (click)="destroy()" [disabled]="myForm.invalid" class="delete-button">削除</button>
+</div>
