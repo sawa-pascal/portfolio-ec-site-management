@@ -1,16 +1,74 @@
-// カラーバリアブル定義
-$btn-bg: #a8a8a8;
-$btn-color: #fff;
-$btn-border: #e9e9e9;
-$btn-hover-bg: #cef9ff;
-$btn-disabled-bg: #d9ffff;
-$btn-disabled-color: #a7a7a7;
-$page-btn-active-bg: #fffde5;
-$page-btn-active-color: #000000;
-$page-btn-active-border: #918f87;
-$icon-active-color: #f5f2e8;
-$icon-disabled-color: #e9e4d2;
-$icon-shadow: #ebebebec;
+// ======================================
+// Pager Buttons SCSS - Improved/Refactored
+// ======================================
+
+//
+// ------ カラーとサイズバリアブル ------
+$pager-btn: (
+  bg:            #a8a8a8,
+  color:         #fff,
+  border:        #e9e9e9,
+  hover-bg:      #747474,
+  disabled-bg:   #d9ffff,
+  disabled-color:#a7a7a7,
+  indicator-bg:  #fffde5,
+  indicator-color: #000,
+  indicator-border: #918f87,
+  icon-active:   #f5f2e8,
+  icon-disabled: #e9e4d2,
+  icon-shadow:   #ebebebec,
+  secondary-disabled-bg: #f1f1f1,
+  secondary-disabled-color: #bcbcb8,
+);
+
+$pager-btn-desktop-min-width: 40px;
+$pager-btn-mobile-min-width: 32px;
+$pager-btn-desktop-padding: 0.25rem 0.75rem;
+$pager-btn-mobile-padding: 0.18rem 0.4rem;
+$pager-btn-desktop-fontsize: 1.1rem;
+$pager-btn-mobile-fontsize: 1rem;
+
+// --------- ミックスイン --------
+
+@mixin pager-btn-base {
+  min-width: $pager-btn-desktop-min-width;
+  padding: $pager-btn-desktop-padding;
+  font-size: $pager-btn-desktop-fontsize;
+  border: 1px solid map-get($pager-btn, border);
+  border-radius: 0.3rem;
+  background: map-get($pager-btn, bg);
+  color: map-get($pager-btn, color);
+  transition: background 0.2s, color 0.2s;
+  position: relative; /* for children */
+  outline: none;
+}
+
+@mixin pager-btn-hover {
+  background: map-get($pager-btn, hover-bg);
+  color: map-get($pager-btn, color);
+  cursor: pointer;
+}
+
+@mixin pager-btn-disabled {
+  background: map-get($pager-btn, disabled-bg);
+  color: map-get($pager-btn, disabled-color);
+  border: 1px solid #e5e5e5;
+  cursor: default;
+}
+
+@mixin pager-btn-indicator {
+  background: map-get($pager-btn, indicator-bg) !important;
+  color: map-get($pager-btn, indicator-color) !important;
+  font-weight: bold;
+  border: 1.5px solid map-get($pager-btn, indicator-border);
+}
+
+@mixin pager-btn-secondary-disabled {
+  background: map-get($pager-btn, secondary-disabled-bg);
+  color: map-get($pager-btn, secondary-disabled-color);
+}
+
+// ----------- ページャーボタンスタイル -----------
 
 .btn-group {
   display: flex;
@@ -18,53 +76,37 @@ $icon-shadow: #ebebebec;
   gap: 0.5rem;
   margin: 0.5rem 0;
 
-  // 共通ボタンスタイル
   .btn {
-    min-width: 40px;
-    padding: 0.25rem 0.75rem;
-    font-size: 1.1rem;
-    border: 1px solid $btn-border;
-    border-radius: 0.3rem;
-    background: $btn-bg;
-    color: $btn-color;
-    transition: background 0.2s, color 0.2s;
-
+    @include pager-btn-base;
+    
     // ホバー時
     &:not(:disabled):hover {
-      background: $btn-hover-bg;
-      color: $btn-color;
-      cursor: pointer;
+      @include pager-btn-hover;
     }
 
     // 無効時
     &:disabled {
-      background: $btn-disabled-bg;
-      color: $btn-disabled-color;
-      border: 1px solid #e5e5e5;
-      cursor: default;
+      @include pager-btn-disabled;
     }
 
-    // ページインジケーター(特殊なdisabled+style属性)
+    // 特殊ページインジケーター
     &[disabled][style] {
-      background: $page-btn-active-bg !important;
-      color: $page-btn-active-color !important;
-      font-weight: bold;
-      border: 1.5px solid $page-btn-active-border;
+      @include pager-btn-indicator;
     }
 
-    // secondaryボタン（例えば.pageボタン以外のdisabled時）
+    // btn-secondary用の特別なdisabled色
     &.btn-secondary:disabled {
-      background: #f1f1f1;
-      color: #bcbcb8;
+      @include pager-btn-secondary-disabled;
     }
 
     // アイコンスタイル
     i {
-      color: $icon-active-color;
-      text-shadow: 0px 1px 1px $icon-shadow;
+      color: map-get($pager-btn, icon-active);
+      text-shadow: 0px 1px 1px map-get($pager-btn, icon-shadow);
+      vertical-align: middle;
     }
     &:disabled i {
-      color: $icon-disabled-color;
+      color: map-get($pager-btn, icon-disabled);
     }
   }
 }
@@ -78,19 +120,21 @@ button[disabled] {
   }
 }
 
+// フォントアイコン共通
 .fa {
   vertical-align: middle;
 }
 
-// レスポンシブ（モバイル調整）
+// ----------------- メディアクエリ(レスポンシブ) -----------------
 @media (max-width: 430px) {
   .btn-group {
     flex-wrap: wrap;
     gap: 0.2rem;
     .btn {
-      min-width: 32px;
-      font-size: 1rem;
-      padding: 0.18rem 0.4rem;
+      min-width: $pager-btn-mobile-min-width;
+      font-size: $pager-btn-mobile-fontsize;
+      padding: $pager-btn-mobile-padding;
     }
   }
 }
+
