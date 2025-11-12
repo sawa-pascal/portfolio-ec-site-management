@@ -1,6 +1,12 @@
 <div class="wrap">
   <app-header></app-header>
 
+  <!-- サインイン画面が表示中なら -->
+  @if (isComponentVisible()) {
+  <div class="no-menu-container">
+    <router-outlet></router-outlet>
+  </div>
+  } @else {
   <div class="flex">
     <div class="menu">
       <app-menu></app-menu>
@@ -10,6 +16,7 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+  }
 
   <app-footer></app-footer>
 </div>

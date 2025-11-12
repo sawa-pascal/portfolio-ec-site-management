@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { MenuComponent } from "./menu/menu.component";
@@ -12,4 +12,12 @@ import { MenuComponent } from "./menu/menu.component";
 })
 export class App {
   protected readonly title = signal('ec-site-management-system');
+
+  constructor(private router: Router) {}
+
+  isComponentVisible(): boolean {
+    // サインイン画面（''または'signin'のルート）の時のみtrueを返す
+    const url = this.router.url;
+    return (url === '/' || url === '/signin');
+  }
 }
