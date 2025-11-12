@@ -14,7 +14,7 @@ import { SharedValueService } from '../../services/shared-value.service';
 })
 export class ItemsCreatorComponent implements OnInit {
   name: FormControl = new FormControl('', Validators.required);
-  price: FormControl = new FormControl(0, [Validators.required, Validators.min(0)]);
+  price: FormControl = new FormControl(1, [Validators.required, Validators.min(1)]);
   description: FormControl = new FormControl('');
   categoriesDropDown: FormControl = new FormControl('');
 
@@ -36,7 +36,7 @@ export class ItemsCreatorComponent implements OnInit {
 
   ngOnInit() {
     this.price.valueChanges.subscribe((value) => {
-      if (value < 0) this.price.setValue(0);
+      if (value < 1) this.price.setValue(1);
     });
 
     this.categoriesDropDown.setValue(this.categoriesService.getCategories()[0].name);
@@ -61,6 +61,9 @@ export class ItemsCreatorComponent implements OnInit {
         next: (res: any) => {
           if (res.success) {
             this.router.navigate(['/items-list']);
+          }
+          else{
+            console.log(res.message);
           }
         },
         error: () => {
