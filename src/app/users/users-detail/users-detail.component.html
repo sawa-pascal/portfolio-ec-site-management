@@ -1,13 +1,34 @@
 <p>ユーザー詳細</p>
 @if (user) {
-<div>
-  <div>ID {{ user.id }}</div>
-  <div>名前 {{ user.name }}</div>
-  <div>メール {{ user.email }}</div>
-  <div>電話番号 {{ user.tel }}</div>
-  <div>都道府県 {{ convertPrefectureName(user.prefecture_id) }}</div>
-  <div>住所 {{ user.address }}</div>
+<div class="form-group">
+  <form>
+    <div class="form-item">
+      <label>ID</label>
+      <span>{{ user.id }}</span>
+    </div>
+    <div class="form-item">
+      <label>名前</label>
+      <span>{{ user.name }}</span>
+    </div>
+    <div class="form-item">
+      <label>メール</label>
+      <span>{{ user.email }}</span>
+    </div>
+    <div class="form-item">
+      <label>電話番号</label>
+      <span>{{ user.tel }}</span>
+    </div>
+    <div class="form-item">
+      <label>都道府県</label>
+      <span>{{ convertPrefectureName(user.prefecture_id) }}</span>
+    </div>
+    <div class="form-item">
+      <label>住所</label>
+      <span>{{ user.address }}</span>
+    </div>
+    <div class="form-actions">
+      <button type="button" (click)="edit()">編集</button>
+    </div>
+  </form>
 </div>
-
-<div><button (click)="edit()">編集</button></div>
 }

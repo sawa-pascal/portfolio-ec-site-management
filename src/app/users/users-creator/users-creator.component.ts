@@ -15,7 +15,7 @@ export class UsersCreatorComponent {
   name: FormControl = new FormControl('', Validators.required);
   email: FormControl = new FormControl('', [Validators.required, Validators.email]);
   tel: FormControl = new FormControl('', Validators.required);
-  prefecturesDropDown: FormControl = new FormControl('北海道'); // 別の方法で初期化を考えたほうが良いngInitでは無理だった
+  prefecturesDropDown: FormControl = new FormControl('', Validators.required);
   address: FormControl = new FormControl('');
 
   myForm: FormGroup = new FormGroup({

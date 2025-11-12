@@ -1,50 +1,40 @@
 <p>ユーザー編集</p>
-
-<form [formGroup]="myForm" (submit)="update()">
-  <div>ID {{ id }}</div>
-
-  <div>
-    <label>
-      名前
+<div class="form-group">
+  <form [formGroup]="myForm" (submit)="update()">
+    <div>
+      <label class="label">ID</label>
+      <span>{{ id }}</span>
+    </div>
+    <div>
+      <label class="label">名前</label>
       <input type="text" formControlName="name" />
-    </label>
-  </div>
-
-  <div>
-    <label>
-      メール
+    </div>
+    <div>
+      <label class="label">メール</label>
       <input type="mail" formControlName="email" />
-    </label>
-  </div>
-
-  <div>
-    <label>
-      電話番号
+    </div>
+    <div>
+      <label class="label">電話番号</label>
       <input type="text" formControlName="tel" />
-    </label>
-  </div>
-
-  <div>
-    <label>
-      都道府県
+    </div>
+    <div>
+      <label class="label">都道府県</label>
       <select class="drop-down" formControlName="prefecturesDropDown">
+        <option value="" hidden>都道府県を選択してください</option>
         @for (prefecture of getPrefectures(); track $index) {
-          <option>{{ prefecture.name }}</option>
+        <option>{{ prefecture.name }}</option>
         }
       </select>
-    </label>
-  </div>
-
-  <div>
-    <label>
-      住所
+    </div>
+    <div>
+      <label class="label">住所</label>
       <input type="text" formControlName="address" />
-    </label>
-  </div>
-
-  <div>
-    <button type="submit" [disabled]="myForm.invalid">更新</button>
-  </div>
-</form>
-
-<button type="button" (click)="destroy()" [disabled]="myForm.invalid">削除</button>
+    </div>
+    <div>
+      <button type="submit" [disabled]="myForm.invalid" class="update-button">更新</button>
+    </div>
+  </form>
+  <button type="button" (click)="destroy()" [disabled]="myForm.invalid" class="delete-button">
+    削除
+  </button>
+</div>

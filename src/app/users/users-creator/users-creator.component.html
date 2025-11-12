@@ -11,24 +11,33 @@
     <div>
       メール
       <input type="mail" formControlName="email" placeholder="メール"/>
+      @if (email.touched && email.errors?.['required']) {
+        <div class="error">メールアドレスが必要です</div>
+        }
     </div>
     <div>
       電話番号
       <input type="text" formControlName="tel" placeholder="電話番号"/>
+      @if (tel.touched && tel.errors?.['required']) {
+        <div class="error">電話番号が必要です</div>
+        }
     </div>
     <div>
       都道府県
       <select class="drop-down" formControlName="prefecturesDropDown">
+        <option value="" hidden>都道府県を選択してください</option>
         @for (prefecture of getPrefectures(); track $index) {
         <option>{{ prefecture.name }}</option>
         }
       </select>
+      @if (prefecturesDropDown.touched && prefecturesDropDown.errors?.['required']) {
+        <div class="error">都道府県を選択してください</div>
+        }
     </div>
     <div>
       住所
       <input type="text" formControlName="address" placeholder="住所"/>
     </div>
     <div><button type="submit" [disabled]="myForm.invalid">作成</button></div>
-    <hr />
   </form>
 </div>
