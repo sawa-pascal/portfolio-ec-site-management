@@ -1,26 +1,26 @@
+<h1>サインイン</h1>
 <div class="form-group">
-  <p>サインイン</p>
   <form [formGroup]="myForm" (submit)="onSignin()">
     <div>
-      名前
-      <input type="text" formControlName="name" />
+      <label for="name" class="label">名前</label>
+      <input id="name" type="text" formControlName="name" />
       @if (name.touched && name.errors?.['required']) {
-      <div class="error">名前が必要です</div>
+        <div class="error">名前が必要です</div>
       }
     </div>
 
     <div>
-      パスワード
-      <input type="password" formControlName="password" />
+      <label for="password" class="label">パスワード</label>
+      <input id="password" type="password" formControlName="password" />
       @if (password.touched && password.errors?.['required']) {
-      <div class="error">パスワードが必要です</div>
-      } @if (password.touched && password.errors?.['minlength']) {
-      <div class="error">最低4文字を入力してください</div>
+        <div class="error">パスワードが必要です</div>
+      }
+      @if (password.touched && password.errors?.['minlength']) {
+        <div class="error">最低4文字を入力してください</div>
       }
     </div>
-    <div><button type="submit" [disabled]="myForm.invalid">サインイン</button></div>
 
-    <hr />
-    <p>{{ message }}</p>
+    <button type="submit" [disabled]="myForm.invalid">サインイン</button>
   </form>
 </div>
+<p class="error">{{ message }}</p>

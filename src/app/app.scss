@@ -18,6 +18,7 @@ app-footer {
 }
 
 $container-width: 80%;
+
 .flex {
   display: flex;
   flex: 1 1 auto;
@@ -35,6 +36,15 @@ $container-width: 80%;
     box-sizing: border-box;
     width: $container-width;
   }
+}
+
+.no-menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -69,5 +79,12 @@ $container-width: 80%;
       width: auto;
       height: $container-height;
     }
+  }
+
+  .no-menu-container {
+    box-sizing: border-box;
+
+    width: auto;
+    height: 100%;
   }
 }

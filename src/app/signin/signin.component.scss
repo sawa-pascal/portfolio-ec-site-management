@@ -1,13 +1,1 @@
-form-group {
-  margin: 0px auto;
-  background-color: antiquewhite;
-}
-
-.error {
-  font-size: 0.75em;
-  color: red;
-}
-
-.message {
-  font-size: 11px;
-}
+@use "../form-base.scss"
