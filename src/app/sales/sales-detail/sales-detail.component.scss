@@ -107,13 +107,26 @@ img {
   outline: none;
 }
 
-.return-sales-button {
-  display: block;
-  margin: 1em auto;
-  padding: 0.5em 1em;
+// カラーパレット変数
+$background: #f0f0f0;
+$primary: #007bff;
+$primary-dark: darken($primary, 10%);
+
+button {
+  font-size: 16px;
+  background-color: $primary;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  margin-top: 10px;
+  &:hover {
+    background-color: $primary-dark;
+  }
 }
 
-$background: #f0f0f0;
 :host {
   display: flex;
   align-items: center;
