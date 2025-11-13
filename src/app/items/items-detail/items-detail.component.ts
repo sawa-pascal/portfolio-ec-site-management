@@ -55,4 +55,8 @@ export class ItemsDetailComponent implements OnInit {
   getImageUrl() : string{
     return this.sharedValueService.getImageUrl() + this.item.image_url;
   }
+
+  returnPage(){
+    this.router.navigate(['/items-list']);
+  }
 }
