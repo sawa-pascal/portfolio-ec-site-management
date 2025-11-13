@@ -77,4 +77,8 @@ export class CategoriesEditorComponent implements OnInit {
       },
     });
   }
+
+  returnPage() {
+    this.router.navigate(['/categories-detail', this.id]);
+  }
 }

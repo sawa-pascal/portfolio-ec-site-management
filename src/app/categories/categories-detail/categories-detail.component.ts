@@ -40,4 +40,8 @@ export class CategoriesDetailComponent implements OnInit {
   edit() {
     this.router.navigate(['/categories-editor', this.category.id]);
   }
+
+  returnPage() {
+    this.router.navigate(['/categories-list']);
+  }
 }

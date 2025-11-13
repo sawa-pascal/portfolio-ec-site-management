@@ -36,4 +36,8 @@ export class CategoriesCreatorComponent implements OnInit {
         },
       });
   }
+
+  returnPage(){
+    this.router.navigate(['/categories-list']);
+  }
 }
