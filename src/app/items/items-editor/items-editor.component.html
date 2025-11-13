@@ -22,6 +22,10 @@
       <input type="number" formControlName="price" />
     </div>
     <div>
+      <label class="label">在庫数</label>
+      <input type="number" formControlName="stock" />
+    </div>
+    <div>
       <label class="label">説明</label>
       <input type="text" formControlName="description" />
     </div>
@@ -63,5 +67,5 @@
       <button type="submit" [disabled]="myForm.invalid" class="update-button">更新</button>
     </div>
   </form>
-  <button type="button" (click)="destroy()" [disabled]="myForm.invalid" class="delete-button">削除</button>
+  <button type="button" (click)="destroy()" class="delete-button">削除</button>
 </div>

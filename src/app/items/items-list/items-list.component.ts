@@ -33,7 +33,14 @@ export class ItemsListComponent implements OnInit {
     this.itemsService.requestGetItemsList().subscribe({
       next: (res: any) => {
         if (res.success) {
-          this.items = this.viewItems = res.items as Items[];
+          console.log(res.items);
+          // quantityプロパティをstockに変換して格納する
+          this.items = this.viewItems = (res.items as any[]).map(i => ({
+            ...i,
+            stock: i.quantity,
+          }));
+
+          console.log(this.items);
         }
       },
       error: () => {

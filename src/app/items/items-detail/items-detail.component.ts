@@ -13,7 +13,7 @@ import { SharedValueService } from '../../services/shared-value.service';
   styleUrl: './items-detail.component.scss',
 })
 export class ItemsDetailComponent implements OnInit {
-  item: Items = { id: 0, name: '', price: 0, description: '', image_url: '', category_id: 0 };
+  item: Items = { id: 0, name: '', price: 0, description: '', image_url: '', category_id: 0, stock: 0 };
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,10 @@ export class ItemsDetailComponent implements OnInit {
           if (res.items == null) {
             this.router.navigate(['/items-list']);
           } else {
-            this.item = res.items as Items;
+            this.item = {
+              ...(res.items as Items),
+              stock: res.items.quantity
+            };
           }
         }
       },
