@@ -117,4 +117,8 @@ export class ItemsCreatorComponent implements OnInit {
         },
       });
   }
+
+  returnPage(){
+    this.router.navigate(['/items-list']);
+  }
 }

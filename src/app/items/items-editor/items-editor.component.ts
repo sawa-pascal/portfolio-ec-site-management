@@ -165,4 +165,8 @@ export class ItemsEditorComponent implements OnInit {
         },
       });
   }
+
+  returnPage(){
+    this.router.navigate(['/items-detail', this.id]);
+  }
 }

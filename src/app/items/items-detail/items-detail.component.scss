@@ -1,18 +1,29 @@
-@use "../../form-base.scss";
+@use '../../form-base.scss';
 
 .category-name a {
-    color: inherit;
-    text-decoration: none;
-    background: none;
-    outline: none;
-    box-shadow: none;
-    font-weight: inherit;
-    transition: color 0.2s, border-bottom 0.2s;
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  font-weight: inherit;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.category-name a:hover,
+.category-name a:focus {
+  color: #ff4b33;
+  background-color: #fff7e6;
+  outline: none;
+}
+
+button {
+  /* ボタン間の間隔を追加 */
+  margin-top: 10px;
+  margin-right: 64px;
+
+  /* 最後のボタンの右マージンを消す */
+  &:last-child {
+    margin-right: 0;
   }
-  
-  .category-name a:hover,
-  .category-name a:focus {
-    color: #ff4b33;
-    background-color: #fff7e6;
-    outline: none;
-  }
+}

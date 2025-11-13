@@ -1,4 +1,4 @@
-@use "../../form-base.scss";
+@use '../../form-base.scss';
 
 p {
   margin-bottom: 10px;
@@ -36,7 +36,7 @@ p {
   }
 
   // .update-buttonを表示してそれ以外のsubmitボタンは非表示
-  button[type="submit"]:not(.update-button) {
+  button[type='submit']:not(.update-button) {
     display: none;
   }
 }
@@ -57,6 +57,15 @@ button,
 
   &:hover {
     background-color: form-base.$primary-dark;
+  }
+
+  /* ボタン間の間隔を追加 */
+  margin-top: 10px;
+  margin-right: 64px;
+
+  /* 最後のボタンの右マージンを消す */
+  &:last-child {
+    margin-right: 0;
   }
 }
 

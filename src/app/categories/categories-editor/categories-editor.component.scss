@@ -58,6 +58,15 @@ button,
   &:hover {
     background-color: form-base.$primary-dark;
   }
+
+    /* ボタン間の間隔を追加 */
+    margin-top: 10px;
+    margin-right: 64px;
+  
+    /* 最後のボタンの右マージンを消す */
+    &:last-child {
+      margin-right: 0;
+    }
 }
 
 // .delete-button 追加で色を変えたいならここで定義
