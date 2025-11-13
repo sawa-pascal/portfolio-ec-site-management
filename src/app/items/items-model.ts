@@ -5,4 +5,5 @@ export interface Items {
   description: string;
   image_url: string;
   category_id: number;
+  stock: number;
 }

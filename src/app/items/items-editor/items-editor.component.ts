@@ -16,13 +16,15 @@ import { SharedValueService } from '../../services/shared-value.service';
 export class ItemsEditorComponent implements OnInit {
   id: number = 0;
   name: FormControl = new FormControl('', Validators.required);
-  price: FormControl = new FormControl(0, Validators.required);
+  price: FormControl = new FormControl(1, [Validators.required, Validators.min(1)]);
+  stock: FormControl = new FormControl(0, [Validators.required, Validators.min(0)]);
   description: FormControl = new FormControl('');
   categoriesDropDown: FormControl = new FormControl('');
 
   myForm: FormGroup = new FormGroup({
     name: this.name,
     price: this.price,
+    stock: this.stock,
     description: this.description,
     categoriesDropDown: this.categoriesDropDown,
   });
@@ -40,6 +42,14 @@ export class ItemsEditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.price.valueChanges.subscribe((value) => {
+      if (value < 1) this.price.setValue(1);
+    });
+
+    this.stock.valueChanges.subscribe((value) => {
+      if (value < 0) this.stock.setValue(0);
+    });
+
     this.id = Number(this.route.snapshot.params['id']);
 
     this.itemsService.requestGetItemsList(this.id).subscribe({
@@ -50,6 +60,7 @@ export class ItemsEditorComponent implements OnInit {
           } else {
             this.name.setValue(res.items['name']);
             this.price.setValue(Number(res.items['price']));
+            this.stock.setValue(Number(res.items['quantity']));
             this.description.setValue(res.items['description']);
             this.first_origin_image_url = this.image_url = res.items['image_url'];
             this.categoriesDropDown.setValue(
@@ -76,6 +87,7 @@ export class ItemsEditorComponent implements OnInit {
       description: this.description.value,
       image_url: this.image_url,
       category_id: Number(category_id),
+      stock: this.stock.value,
     };
 
     console.log(this.first_origin_image_url);
@@ -83,7 +95,7 @@ export class ItemsEditorComponent implements OnInit {
       next: (res: any) => {
         if (res.success) {
           this.router.navigate(['./items-list']);
-        }else{
+        } else {
           console.log('エラー' + res.message);
         }
       },

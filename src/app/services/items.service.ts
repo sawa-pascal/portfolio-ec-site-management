@@ -19,7 +19,8 @@ export class ItemsService {
     price: number,
     description: string,
     image_url: string,
-    category_id: number
+    category_id: number,
+    stock: number,
   ) {
     return this.http.post(`${this.sharedValueService.getApiUrl()}items/create_items.php`, {
       name: name,
@@ -27,10 +28,11 @@ export class ItemsService {
       description: description,
       image_url: image_url,
       category_id: category_id,
+      stock: stock,
     });
   }
 
-  requestUpdateItems(items: Items, origin_image_url : string) {
+  requestUpdateItems(items: Items, origin_image_url: string) {
     return this.http.post(`${this.sharedValueService.getApiUrl()}items/update_items.php`, {
       id: items.id,
       name: items.name,
@@ -39,6 +41,7 @@ export class ItemsService {
       origin_image_url: origin_image_url,
       image_url: items.image_url,
       category_id: items.category_id,
+      stock: items.stock,
     });
   }
 
@@ -51,6 +54,9 @@ export class ItemsService {
   requestUploadItemImage(image_url: string, category_name: string, data: FormData) {
     data.append('image_url', image_url);
     data.append('category_name', category_name);
-    return this.http.post(`${this.sharedValueService.getApiUrl()}items/upload_item_image.php`, data);
+    return this.http.post(
+      `${this.sharedValueService.getApiUrl()}items/upload_item_image.php`,
+      data
+    );
   }
 }

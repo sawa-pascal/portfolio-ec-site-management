@@ -15,12 +15,14 @@ import { SharedValueService } from '../../services/shared-value.service';
 export class ItemsCreatorComponent implements OnInit {
   name: FormControl = new FormControl('', Validators.required);
   price: FormControl = new FormControl(1, [Validators.required, Validators.min(1)]);
+  stock: FormControl = new FormControl(0, [Validators.required, Validators.min(0)]);
   description: FormControl = new FormControl('');
   categoriesDropDown: FormControl = new FormControl('');
 
   myForm: FormGroup = new FormGroup({
     name: this.name,
     price: this.price,
+    stock: this.stock,
     description: this.description,
     categoriesDropDown: this.categoriesDropDown,
   });
@@ -39,6 +41,10 @@ export class ItemsCreatorComponent implements OnInit {
       if (value < 1) this.price.setValue(1);
     });
 
+    this.stock.valueChanges.subscribe((value) => {
+      if (value < 0) this.stock.setValue(0);
+    });
+
     this.categoriesDropDown.setValue(this.categoriesService.getCategories()[0].name);
   }
 
@@ -55,7 +61,8 @@ export class ItemsCreatorComponent implements OnInit {
         this.price.value,
         this.description.value,
         this.image_url,
-        Number(category_id)
+        Number(category_id),
+        this.stock.value
       )
       .subscribe({
         next: (res: any) => {

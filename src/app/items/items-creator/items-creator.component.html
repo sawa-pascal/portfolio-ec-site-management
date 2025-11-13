@@ -24,6 +24,13 @@
       }
     </div>
     <div>
+      在庫数
+      <input type="number" formControlName="stock" placeholder="在庫数"/>
+      @if (stock.touched && stock.errors?.['required']) {
+      <div class="error">在庫数が必要です</div>
+      }
+    </div>
+    <div>
       説明
       <input type="text" formControlName="description" placeholder="説明"/>
     </div>

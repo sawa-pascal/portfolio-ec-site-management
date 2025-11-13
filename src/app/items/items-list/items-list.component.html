@@ -20,6 +20,7 @@
     <th>名前</th>
     <th>カテゴリー</th>
     <th>価格</th>
+    <th>在庫数</th>
   </tr>
 
   @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
@@ -34,6 +35,7 @@
       }}</a>
     </td>
     <td>{{ item.price | currency : 'JPY' : 'symbol' }}</td>
+    <td>{{ item.stock }}</td>
   </tr>
   }
 </table>
