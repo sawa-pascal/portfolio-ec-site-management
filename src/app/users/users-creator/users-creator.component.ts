@@ -61,4 +61,8 @@ export class UsersCreatorComponent {
   getPrefectures(): Prefecture[] {
     return this.prefecturesService.getPrefectures();
   }
+
+  returnPage() {
+    this.router.navigate(['./users-list']);
+  }
 }

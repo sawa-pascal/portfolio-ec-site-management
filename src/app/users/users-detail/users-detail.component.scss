@@ -1,1 +1,12 @@
-@use "../../form-base.scss";
+@use '../../form-base.scss';
+
+button {
+  /* ボタン間の間隔を追加 */
+  margin-top: 10px;
+  margin-right: 64px;
+
+  /* 最後のボタンの右マージンを消す */
+  &:last-child {
+    margin-right: 0;
+  }
+}

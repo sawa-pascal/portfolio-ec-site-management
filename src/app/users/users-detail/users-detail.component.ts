@@ -36,4 +36,8 @@ export class UsersDetailComponent implements OnInit {
   convertPrefectureName(id: number): string {
     return this.prefecturesService.convertPrefectureName(id);
   }
+
+  returnPage() {
+    this.router.navigate(['./users-list']);
+  }
 }

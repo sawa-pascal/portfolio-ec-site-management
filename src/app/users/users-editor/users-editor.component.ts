@@ -96,4 +96,8 @@ export class UsersEditorComponent implements OnInit {
   getPrefectures(): Prefecture[] {
     return this.prefecturesService.getPrefectures();
   }
+
+  returnPage() {
+    this.router.navigate(['./users-detail', this.id]);
+  }
 }
