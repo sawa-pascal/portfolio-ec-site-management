@@ -5,15 +5,24 @@ import { CategoriesService } from '../../services/categories.service';
 import { ItemsService } from '../../services/items.service';
 import { Items } from '../items-model';
 import { SharedValueService } from '../../services/shared-value.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-items-detail',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CurrencyPipe],
   templateUrl: './items-detail.component.html',
   styleUrl: './items-detail.component.scss',
 })
 export class ItemsDetailComponent implements OnInit {
-  item: Items = { id: 0, name: '', price: 0, description: '', image_url: '', category_id: 0, stock: 0 };
+  item: Items = {
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    image_url: '',
+    category_id: 0,
+    stock: 0,
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +42,7 @@ export class ItemsDetailComponent implements OnInit {
           } else {
             this.item = {
               ...(res.items as Items),
-              stock: res.items.quantity
+              stock: res.items.quantity,
             };
           }
         }
@@ -52,11 +61,11 @@ export class ItemsDetailComponent implements OnInit {
     return this.categoriesService.convertCategoryName(id);
   }
 
-  getImageUrl() : string{
+  getImageUrl(): string {
     return this.sharedValueService.getImageUrl() + this.item.image_url;
   }
 
-  returnPage(){
+  returnPage() {
     this.router.navigate(['/items-list']);
   }
 }
