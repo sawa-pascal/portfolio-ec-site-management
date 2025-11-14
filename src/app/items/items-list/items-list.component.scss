@@ -3,6 +3,18 @@ table {
   margin: 0 auto;
   padding: 0;
   width: 620px;
+
+  .name,
+  .price {
+    min-width: 32px;
+  }
+  .category {
+    min-width: 80px;
+  }
+  .stock {
+    min-width: 48px;
+  }
+
   tr {
     background-color: #fff;
     border-bottom: 2px solid #fff;

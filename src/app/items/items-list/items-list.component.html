@@ -16,11 +16,11 @@
 
 <table class="table">
   <tr>
-    <th>ID</th>
-    <th>名前</th>
-    <th>カテゴリー</th>
-    <th>価格</th>
-    <th>在庫数</th>
+    <th class="id">ID</th>
+    <th class="name">名前</th>
+    <th class="category">カテゴリー</th>
+    <th class="price">価格</th>
+    <th class="stock">在庫数</th>
   </tr>
 
   @for (item of viewItems.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
