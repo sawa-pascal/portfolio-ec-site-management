@@ -6,7 +6,7 @@
     <p class="user-name">
       ユーザー名: @if (viewSaleItems && viewSaleItems.length > 0) {
       <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
-        {{ convertUserName(viewSaleItems[0]['user_id']) }}
+        {{ viewSaleItems[0]['user_name'] }}
       </a>
       }
     </p>
