@@ -5,11 +5,29 @@
   <button (click)="searchSales()">検索</button>
 </div>
 
+<div class="sales-priod">
+  期間を指定
+  <mat-form-field>
+    <mat-label>開始日</mat-label>
+    <input matInput [matDatepicker]="startPicker" placeholder="選択" readonly [value]="selectedStartDate" (dateChange)="onStartDateChange($event)">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker panelClass="ja-datepicker"></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>終了日</mat-label>
+    <input matInput [matDatepicker]="endPicker" placeholder="選択" readonly [value]="selectedEndDate" (dateChange)="onEndDateChange($event)">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker panelClass="ja-datepicker"></mat-datepicker>
+  </mat-form-field>
+</div>
+
 <table class="table">
   <tr>
-    <th>ID</th>
-    <th>日付</th>
-    <th>ユーザー名</th>
+    <th class="id">ID</th>
+    <th class="date">日付</th>
+    <th class="user-name-title">ユーザー名</th>
+    <th class="total-with-tax">税込み合計金額</th>
   </tr>
 
   @for (sale of viewSales.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
@@ -19,10 +37,20 @@
     </td>
     <td>{{ sale.date }}</td>
     <td class="user-name">
-      <a [routerLink]="['/users-detail', sale.user_id]"> {{ convertUserName(sale.user_id) }}</a>
+      <a [routerLink]="['/users-detail', sale.user_id]"> {{ sale.user_name }}</a>
+    </td>
+
+    <td>
+      {{ getItemTotalWithTax(sale.total) | currency : 'JPY' : 'symbol' : '1.0-0' }}
     </td>
   </tr>
   }
 </table>
 
 <app-pager [itemCount]="viewSales.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize" />
+
+<div class="sales-total-with-tax">
+  <strong>
+    税込み総売上金額：{{ getTotalWithTax() | currency : 'JPY' : 'symbol' : '1.0-0' }}
+  </strong>
+</div>

@@ -3,6 +3,16 @@ table {
   margin: 0 auto;
   padding: 0;
   width: 600px;
+
+  .date,
+  .user-name-title {
+    min-width: 84px;
+  }
+
+  .total-with-tax {
+    min-width: 112px;
+  }
+
   tr {
     background-color: #fff;
     border-bottom: 2px solid #fff;
@@ -68,6 +78,9 @@ p {
   box-shadow: none;
   font-weight: inherit;
   transition: color 0.2s, border-bottom 0.2s;
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .user-name a:hover,
@@ -76,3 +89,72 @@ p {
   background-color: #fff7e6;
   outline: none;
 }
+
+.sales-total-with-tax {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50px;
+
+  font-size: 32px;
+}
+
+.sales-priod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-form-field {
+    margin: 0 10px;
+  }
+}
+
+// Angular Material Datepicker のオーバーレイ&パネルの見た目を改善
+::ng-deep .mat-datepicker-content,
+::ng-deep .mat-datepicker-popup {
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 5px rgba(0, 0, 0, 0.07);
+  border-radius: 8px !important;
+  color: #222;
+}
+
+// ::ng-deep .mat-calendar {
+//   background: #fff !important;
+//   border-radius: 6px;
+//   box-shadow: none;
+// }
+
+// ::ng-deep .mat-calendar-table,
+// ::ng-deep .mat-calendar-body {
+//   background: #fff;
+// }
+
+// ::ng-deep .mat-calendar-body-cell,
+// ::ng-deep .mat-calendar-body-selected {
+//   background: #fff;
+// }
+
+::ng-deep .mat-calendar-body-selected,
+::ng-deep .mat-calendar-body-active {
+  background: #ffd7ba !important;
+  color: #c43d18 !important;
+}
+
+// ::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+//   border-color: #ff8b47 !important;
+// }
+
+// ::ng-deep .mat-datepicker-popup,
+// ::ng-deep .cdk-overlay-pane {
+//   box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 1.5px 8px rgba(0,0,0,0.11);
+//   background: #fff !important;
+// }
+
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+//   background: #fff !important;
+// }
+
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-outline {
+//   color: #999;
+// }
