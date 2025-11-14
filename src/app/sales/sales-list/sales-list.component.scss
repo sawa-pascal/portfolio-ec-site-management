@@ -107,6 +107,17 @@ p {
 
   mat-form-field {
     margin: 0 10px;
+
+    width: 150px;
+  }
+
+  input {
+    margin: 5px;
+  }
+
+  p {
+    margin: 10px;
+    font-size: 24px;
   }
 }
 
@@ -119,42 +130,17 @@ p {
   color: #222;
 }
 
-// ::ng-deep .mat-calendar {
-//   background: #fff !important;
-//   border-radius: 6px;
-//   box-shadow: none;
-// }
-
-// ::ng-deep .mat-calendar-table,
-// ::ng-deep .mat-calendar-body {
-//   background: #fff;
-// }
-
-// ::ng-deep .mat-calendar-body-cell,
-// ::ng-deep .mat-calendar-body-selected {
-//   background: #fff;
-// }
-
-::ng-deep .mat-calendar-body-selected,
-::ng-deep .mat-calendar-body-active {
-  background: #ffd7ba !important;
-  color: #c43d18 !important;
+// 日付pickerの強調色
+::ng-deep .mat-calendar .mat-calendar-body-selected {
+  background-color: #ff4b33 !important;
+  color: #fff !important;
+}
+// カレンダーの日付マウスオーバーで色変える
+::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover {
+  background-color: #ffccb8 !important;
+  color: #ff4b33 !important;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-// ::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-//   border-color: #ff8b47 !important;
-// }
-
-// ::ng-deep .mat-datepicker-popup,
-// ::ng-deep .cdk-overlay-pane {
-//   box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 1.5px 8px rgba(0,0,0,0.11);
-//   background: #fff !important;
-// }
-
-// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-//   background: #fff !important;
-// }
-
-// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-outline {
-//   color: #999;
-// }

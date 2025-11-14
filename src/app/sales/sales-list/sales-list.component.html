@@ -6,20 +6,52 @@
 </div>
 
 <div class="sales-priod">
-  期間を指定
-  <mat-form-field>
-    <mat-label>開始日</mat-label>
-    <input matInput [matDatepicker]="startPicker" placeholder="選択" readonly [value]="selectedStartDate" (dateChange)="onStartDateChange($event)">
-    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-    <mat-datepicker #startPicker panelClass="ja-datepicker"></mat-datepicker>
-  </mat-form-field>
+  <h5>期間を指定</h5>
+  <div class="start-date">
+    <mat-form-field>
+      <mat-label>開始日</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startPicker"
+        placeholder="日付選択"
+        [value]="selectedStartDate"
+        (dateChange)="onStartDateChange($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker panelClass="ja-datepicker"></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>終了日</mat-label>
-    <input matInput [matDatepicker]="endPicker" placeholder="選択" readonly [value]="selectedEndDate" (dateChange)="onEndDateChange($event)">
-    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-    <mat-datepicker #endPicker panelClass="ja-datepicker"></mat-datepicker>
-  </mat-form-field>
+    <input
+      type="time"
+      [value]="selectedStartDate ? (selectedStartDate | date : 'HH:mm') : ''"
+      (change)="onStartTimeChange($event)"
+      aria-label="開始時刻"
+    />
+  </div>
+
+  <p>~</p>
+
+  <div class="end-date">
+    <mat-form-field>
+      <mat-label>終了日</mat-label>
+      <input
+        matInput
+        [matDatepicker]="endPicker"
+        placeholder="日付選択"
+        [value]="selectedEndDate"
+        (dateChange)="onEndDateChange($event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker panelClass="ja-datepicker"></mat-datepicker>
+    </mat-form-field>
+
+    <input
+      type="time"
+      [value]="selectedEndDate ? (selectedEndDate | date : 'HH:mm') : ''"
+      (change)="onEndTimeChange($event)"
+      aria-label="終了時刻"
+    />
+  </div>
 </div>
 
 <table class="table">
