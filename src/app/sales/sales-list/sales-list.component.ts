@@ -18,14 +18,14 @@ export class CustomDatepickerIntl extends MatDatepickerIntl {
   override calendarLabel = 'カレンダー';
   override openCalendarLabel = 'カレンダーを開く';
 
-  override prevMonthLabel = '前の月';
-  override nextMonthLabel = '次の月';
+  override prevMonthLabel = '';
+  override nextMonthLabel = '';
 
-  override prevYearLabel = '前年';
-  override nextYearLabel = '翌年';
+  override prevYearLabel = '';
+  override nextYearLabel = '';
 
-  override prevMultiYearLabel = '24年前';
-  override nextMultiYearLabel = '24年後';
+  override prevMultiYearLabel = '';
+  override nextMultiYearLabel = '';
 }
 
 @Injectable()
