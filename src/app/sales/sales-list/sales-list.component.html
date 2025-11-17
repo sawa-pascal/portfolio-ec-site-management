@@ -3,6 +3,14 @@
   <input type="text" [formControl]="searchText" placeholder="ユーザー名" />
 
   <button (click)="searchSales()">検索</button>
+
+  <select [formControl]="userNameForm">
+    <option value="" hidden>ユーザー指定</option>
+    <option>指定なし</option>
+    @for (userName of this.userNames; track $index) {
+    <option>{{ userName }}</option>
+    }
+  </select>
 </div>
 
 <div class="sales-priod">

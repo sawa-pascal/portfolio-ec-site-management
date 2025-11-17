@@ -60,9 +60,11 @@ export class SalesListComponent implements OnInit {
   viewSales: Sales[] = [];
   viewSalesTotal: number = 0;
 
+  userNames: string[] = [];
   selectedStartDate: Date | null = null;
   selectedEndDate: Date | null = null;
 
+  userNameForm: FormControl = new FormControl('指定なし');
   searchText: FormControl = new FormControl('');
   pageIndex: number = 0;
   pageSize: number = 10;
@@ -76,7 +78,9 @@ export class SalesListComponent implements OnInit {
       next: (res: any) => {
         if (res.success) {
           this.sales = this.viewSales = res.sales as Sales[];
-
+          // ユーザー名の重複を省いてリスト化
+          this.userNames = Array.from(new Set(this.sales.map((user) => user.user_name)));
+          console.log(this.userNames);
           this.viewSalesTotal = res.sales_total;
         }
       },
@@ -84,6 +88,10 @@ export class SalesListComponent implements OnInit {
         console.log('requestGet失敗');
       },
     });
+
+    this.userNameForm.valueChanges.subscribe(_ =>{
+      this.filterSalesByPeriod(this.selectedStartDate, this.selectedEndDate);
+    })
   }
 
   searchSales() {
@@ -101,7 +109,6 @@ export class SalesListComponent implements OnInit {
     return Math.round(this.viewSalesTotal * (1 + taxRate));
   }
 
-
   onStartTimeChange(event: any) {
     const timeValue = event.target.value;
     if (!timeValue) return;
@@ -112,7 +119,15 @@ export class SalesListComponent implements OnInit {
     if (!this.selectedStartDate) {
       // デフォルト値: 今日にする
       const today = new Date();
-      this.selectedStartDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 0, 0);
+      this.selectedStartDate = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        hours,
+        minutes,
+        0,
+        0
+      );
     } else {
       // 既存の日付に時間をセット
       this.selectedStartDate.setHours(hours);
@@ -134,7 +149,15 @@ export class SalesListComponent implements OnInit {
     if (!this.selectedEndDate) {
       // デフォルト値: 今日にする
       const today = new Date();
-      this.selectedEndDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 59, 999);
+      this.selectedEndDate = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        hours,
+        minutes,
+        59,
+        999
+      );
     } else {
       // 既存の日付に時間をセット
       this.selectedEndDate.setHours(hours);
@@ -193,6 +216,8 @@ export class SalesListComponent implements OnInit {
         let isAfterStart = true;
         let isBeforeEnd = true;
 
+        let isSameName = true;
+
         if (startDate) {
           isAfterStart = saleDate >= startDate;
         }
@@ -200,7 +225,11 @@ export class SalesListComponent implements OnInit {
           isBeforeEnd = saleDate <= endDate;
         }
 
-        if (isAfterStart && isBeforeEnd) {
+        if (this.userNameForm.value != "指定なし") {
+          isSameName = this.userNameForm.value == sale.user_name;
+        }
+
+        if (isAfterStart && isBeforeEnd && isSameName) {
           acc.viewSales.push(sale);
           acc.viewSalesTotal += sale.total;
         }
@@ -218,7 +247,10 @@ export class SalesListComponent implements OnInit {
     const filteredResult = this.viewSales.reduce(
       (acc, sale) => {
         // ユーザー名でフィルター
-        if (!name_query || sale.user_name.toLowerCase().includes(name_query)) {
+        if (this.userNameForm.value != '指定なし' && this.userNameForm.value == sale.user_name) {
+          acc.viewSales.push(sale);
+          acc.viewSalesTotal += sale.total;
+        } else if (!name_query || sale.user_name.toLowerCase().includes(name_query)) {
           acc.viewSales.push(sale);
           acc.viewSalesTotal += sale.total;
         }
