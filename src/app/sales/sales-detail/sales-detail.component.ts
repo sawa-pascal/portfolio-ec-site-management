@@ -5,7 +5,6 @@ import { SalesService } from '../../services/sales.service';
 import { PagerComponent } from '../../pager/pager.component';
 import { SharedValueService } from '../../services/shared-value.service';
 import { CurrencyPipe } from '@angular/common';
-import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-sales-detail',
@@ -31,7 +30,6 @@ export class SalesDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private sharedValueService: SharedValueService,
-    private usersService: UsersService
   ) {}
 
   ngOnInit() {
@@ -70,10 +68,6 @@ export class SalesDetailComponent implements OnInit {
 
   getImageUrl(imageUrl: string): string {
     return this.sharedValueService.getImageUrl() + imageUrl;
-  }
-
-  convertUserName(id: number): string {
-    return this.usersService.convertUserName(id);
   }
 
   returnSalesList() {

@@ -6,7 +6,7 @@
     <p class="user-name">
       ユーザー名: @if (viewSaleItems && viewSaleItems.length > 0) {
       <a [routerLink]="['/users-detail', viewSaleItems[0]['user_id']]">
-        {{ convertUserName(viewSaleItems[0]['user_id']) }}
+        {{ viewSaleItems[0]['user_name'] }}
       </a>
       }
     </p>
@@ -43,4 +43,4 @@
   </div>
 </div>
 
-<button class="return-sales-button" (click)="returnSalesList()">レシート一覧へ戻る</button>
+<button class="return-sales-button" (click)="returnSalesList()">戻る</button>

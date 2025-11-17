@@ -3,6 +3,16 @@ table {
   margin: 0 auto;
   padding: 0;
   width: 600px;
+
+  .date,
+  .user-name-title {
+    min-width: 84px;
+  }
+
+  .total-with-tax {
+    min-width: 112px;
+  }
+
   tr {
     background-color: #fff;
     border-bottom: 2px solid #fff;
@@ -68,6 +78,9 @@ p {
   box-shadow: none;
   font-weight: inherit;
   transition: color 0.2s, border-bottom 0.2s;
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .user-name a:hover,
@@ -75,4 +88,98 @@ p {
   color: #ff4b33;
   background-color: #fff7e6;
   outline: none;
+}
+
+.sales-total-with-tax {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 50px;
+
+  font-size: 32px;
+}
+
+.sales-priod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-form-field {
+    margin: 0 10px;
+
+    width: 150px;
+  }
+
+  input {
+    margin: 5px;
+  }
+
+  p {
+    margin: 10px;
+    font-size: 24px;
+  }
+}
+
+// Angular Material Datepicker のオーバーレイ&パネルの見た目を改善
+::ng-deep .mat-datepicker-content,
+::ng-deep .mat-datepicker-popup {
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 5px rgba(0, 0, 0, 0.07);
+  border-radius: 8px !important;
+  color: #222;
+}
+
+// 日付pickerの強調色
+::ng-deep .mat-calendar .mat-calendar-body-selected {
+  background-color: #ff4b33 !important;
+  color: #fff !important;
+}
+// カレンダーの日付マウスオーバーで色変える
+::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover {
+  background-color: #ffccb8 !important;
+  color: #ff4b33 !important;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+@media screen and (max-width: 800px) {
+  .sales-priod {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h5 {
+      margin: 0 0 8px 0;
+      text-align: left;
+      font-size: 1.1em;
+    }
+
+    .start-date,
+    .end-date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      width: 100%;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 20px;
+      align-self: center;
+    }
+  }
+
+  .sales-total-with-tax {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    margin: 30px;
+  
+    font-size: 16px;
+  }
 }
